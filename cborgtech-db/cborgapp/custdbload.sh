@@ -108,6 +108,7 @@ load_base(){
 	
 all() {
 	load_base cborgapp_internet localhost cyborg c7b8rg
+	load_base cborgapp_garagecloud localhost cyborg c7b8rg
 	}
 	
 all

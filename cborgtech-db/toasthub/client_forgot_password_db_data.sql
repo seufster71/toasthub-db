@@ -14,13 +14,22 @@ INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type
 INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'FORGOTPASSWORD_FORM_USERNAME'),'','Username Or Email:','en',true,true,0,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Validation Error"}',null);
 INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'FORGOTPASSWORD_FORM_USERNAME'),'','Nombre de usuario:','es',true,true,0,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Error de validacion"}',null);
 
+-- Labels Forgot password
 INSERT INTO texts (default_text) VALUES ('Submit Button');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Submit Button');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Botón de enviar');
-INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'FORGOTPASSWORD_FORM'),'FORGOTPASSWORD_FORM_SUBMIT',@lastid,null);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_FORM_SUBMIT'),'Submit','en',true,null);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_FORM_SUBMIT'),'Enviar','es',true,null);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Submit - Button');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Enviar - Botón');
+INSERT INTO page_label_name (page_name_id,name,class_name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'FORGOTPASSWORD_FORM'),'FORGOTPASSWORD_FORM_SUBMIT_BUTTON','form-control btn btn-login',@lastid,null);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order,created) VALUES ((SELECT id FROM page_label_name WHERE name = 'FORGOTPASSWORD_FORM_SUBMIT_BUTTON'),'Submit','en',true,0,null);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order,created) VALUES ((SELECT id FROM page_label_name WHERE name = 'FORGOTPASSWORD_FORM_SUBMIT_BUTTON'),'Enviar','es',true,0,null);
+
+INSERT INTO texts (default_text) VALUES ('Forgot password');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Forgot password');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Se te olvidó tu contraseña');
+INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'FORGOTPASSWORD_FORM'),'FORGOTPASSWORD_FORM_HEADER',@lastid,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_FORM_HEADER'),'Forgot password','en',true,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_FORM_HEADER'),'Se te olvidó tu contraseña','es',true,null);
 
 INSERT INTO texts (default_text) VALUES ('Forgot Password Service');
 SET @lastid = LAST_INSERT_ID();
@@ -41,8 +50,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Successful');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Exitoso');
 INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'FORGOTPASSWORD_SERVICE'),'FORGOTPASSWORD_SERVICE_SUCCESSFUL',@lastid,null);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_SERVICE_SUCCESSFUL'),'Password reset Successful, Check email for new password.','en',true,null);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_SERVICE_SUCCESSFUL'),'Password reset Successful, Chequee el correo electrónico de la nueva contraseña.','es',true,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_SERVICE_SUCCESSFUL'),'Password reset successful, Check email for new password.','en',true,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'FORGOTPASSWORD_SERVICE_SUCCESSFUL'),'Password reset successful, Chequee el correo electrónico de la nueva contraseña.','es',true,null);
 
 INSERT INTO texts (default_text) VALUES ('Password Fail');
 SET @lastid = LAST_INSERT_ID();

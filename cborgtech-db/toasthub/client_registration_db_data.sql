@@ -82,8 +82,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Verify Password');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Verificar contraseña');
 INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params,created) VALUES((SELECT id FROM page_name WHERE name = 'REGISTRATION_FORM'),'REGISTRATION_FORM_VERIFYPASSWORD',@lastid,'TXT','password',2,25,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.User","field":"verifyPassword","type":"String"}','{"matchItem":"REGISTRATION_FORM_PASSWORD"}',null);
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'REGISTRATION_FORM_VERIFYPASSWORD'),'','Verify Password:','en',true,true,7,'{"jsClass":"toastHub.getController(\\"usermanager\\")","jsMethod":"matchPassword"}',null);
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'REGISTRATION_FORM_VERIFYPASSWORD'),'','Verifique su contraseña:','es',true,true,7,'{"jsClass":"toastHub.getController(\\"usermanager\\")","jsMethod":"matchPassword"}',null);
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'REGISTRATION_FORM_VERIFYPASSWORD'),'','Verify Password:','en',true,true,7,'{"operator":"equals","matchField":"REGISTRATION_FORM_PASSWORD","errorMsg":"Password does not match"}',null);
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation,created) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'REGISTRATION_FORM_VERIFYPASSWORD'),'','Verifique su contraseña:','es',true,true,7,'{"operator":"equals","matchField":"REGISTRATION_FORM_PASSWORD","errorMsg":"Las contraseñas no coinciden"}',null);
 
 -- Labels Registration Check Name
 INSERT INTO texts (default_text) VALUES ('Search Username - Button');
@@ -102,7 +102,7 @@ INSERT INTO page_label_name (page_name_id,name,text_id,created) VALUES((SELECT i
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order,created) VALUES ((SELECT id FROM page_label_name WHERE name = 'REGISTRATION_CHECKNAME_FORM_RESET_BUTTON'),'Reset','en',true,1,null);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order,created) VALUES ((SELECT id FROM page_label_name WHERE name = 'REGISTRATION_CHECKNAME_FORM_RESET_BUTTON'),'Reajustar','es',true,1,null);
 
--- Labels Registration Full
+-- Labels Registration
 INSERT INTO texts (default_text) VALUES ('Register - Button');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Register - Button');
@@ -112,6 +112,14 @@ INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order,created) VALUES ((SELECT id FROM page_label_name WHERE name = 'REGISTRATION_FORM_SUBMIT_BUTTON'),'Registro','es',true,0,null);
 
 -- Texts Registration
+INSERT INTO texts (default_text) VALUES ('Registration');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Registration');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Registro');
+INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'REGISTRATION_FORM'),'REGISTRATION_FORM_HEADER',@lastid,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'REGISTRATION_FORM_HEADER'),'Registration','en',true,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'REGISTRATION_FORM_HEADER'),'Registro','es',true,null);
+
 INSERT INTO texts (default_text) VALUES ('Registration Successful');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Registration Successful');

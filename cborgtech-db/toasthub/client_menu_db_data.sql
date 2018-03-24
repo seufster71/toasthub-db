@@ -107,6 +107,32 @@ INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order,create
 INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'LIBRARY' and menus.code = 'MEMBER_MENU_LEFT'),'Library','/member/social/index.html?page=library','en',true,null);
 INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'LIBRARY' and menus.code = 'MEMBER_MENU_LEFT'),'Biblioteca','/member/social/index.html?page=library&lang=es','es',true,null);
 
+INSERT INTO texts (default_text) VALUES ('Member Menu Top');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Member Menu Top');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú de miembros Arriba');
+
+INSERT INTO menus (code,category,title_id,api_version,app_version,created) VALUES ('MEMBER_MENU_TOP','MEMBER',@lastid,'1.0','1.0',null);
+
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_HOME','HOME',0,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'HOME' and menus.code = 'MEMBER_MENU_TOP'),'Home','home','home.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'HOME' and menus.code = 'MEMBER_MENU_TOP'),'Casa','home','home.png','en',true,null);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_ACQUAINTANCE','ACQUAINTANCE',1,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'ACQUAINTANCE' and menus.code = 'MEMBER_MENU_TOP'),'Acquaintances','acquaintance','acquaintance.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'ACQUAINTANCE' and menus.code = 'MEMBER_MENU_TOP'),'Conocidos','acquaintance','acquaintance.png','es',true,null);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_GROUPS','GROUPS',2,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'GROUPS' and menus.code = 'MEMBER_MENU_TOP'),'Groups','groups','groups.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'GROUPS' and menus.code = 'MEMBER_MENU_TOP'),'Grupos','groups','groups.png','es',true,null);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_SHOP','SHOP',3,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SHOP' and menus.code = 'MEMBER_MENU_TOP'),'Shop','shop','shop.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SHOP' and menus.code = 'MEMBER_MENU_TOP'),'Tienda','shop','shop.png','es',true,null);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_NOTES','NOTES',4,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'NOTES' and menus.code = 'MEMBER_MENU_TOP'),'Notes','notes','notes.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'NOTES' and menus.code = 'MEMBER_MENU_TOP'),'Notas','notes','notes.png','es',true,null);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order,created) VALUES ((SELECT id FROM menus WHERE code = 'MEMBER_MENU_TOP'),'PRM_MEMBER_MENU_TOP_PROFILE','PROFILE',5,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PROFILE' and menus.code = 'MEMBER_MENU_TOP'),'Profile','profile','hamburger.png','en',true,null);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered,created) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PROFILE' and menus.code = 'MEMBER_MENU_TOP'),'Biblioteca','profile','hamburger.png','es',true,null);
+
 -- Admin menu Right
 INSERT INTO texts (default_text) VALUES ('Default Admin Menu Right');
 SET @lastid = LAST_INSERT_ID();

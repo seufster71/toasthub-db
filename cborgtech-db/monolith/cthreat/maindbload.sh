@@ -8,10 +8,10 @@ load_base(){
   	mysqladmin -h ${2} -u ${3} --password=${4} create ${1}
   	
   	echo "Loading main_db.sql to ${1}"     
-	if [ -f ../toasthub/main_db.sql ]; then
-   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../toasthub/main_db.sql
+	if [ -f ../../toasthub/main_db.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/main_db.sql
 	else
-		echo "ERROR **** File ../toasthub/main_db.sql is missing ***"   
+		echo "ERROR **** File ../../toasthub/main_db.sql is missing ***"   
 	fi
 	
 	echo "Loading app_main_db_data.sql to ${1}"
@@ -22,17 +22,17 @@ load_base(){
 	fi
 	
 	echo "Loading security_db.sql to ${1}"
-	if [ -f ../toasthub/security_db.sql ]; then
-   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../toasthub/security_db.sql
+	if [ -f ../../toasthub/security_db.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/security_db.sql
    	else
-		echo "ERROR **** File ../toasthub/security_db.sql is missing ***"   
+		echo "ERROR **** File ../../toasthub/security_db.sql is missing ***"   
 	fi
    	
    	echo "Loading security_db_data.sql to ${1}"
-   	if [ -f ../toasthub/security_db_data.sql ]; then
-   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../toasthub/security_db_data.sql
+   	if [ -f ../../toasthub/security_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/security_db_data.sql
    	else
-		echo "ERROR **** File ../toasthub/security_db_data.sql is missing ***"   
+		echo "ERROR **** File ../../toasthub/security_db_data.sql is missing ***"   
 	fi
    	
 	echo "Loading app_security_db_data.sql to ${1}"
@@ -46,7 +46,7 @@ load_base(){
 }
 	
 all() {
-	load_base cborgapp_main localhost cyborg c7b8rg
+	load_base cthreat_main localhost cyborg c7b8rg
 }
 
 all

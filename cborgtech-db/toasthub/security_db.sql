@@ -123,11 +123,13 @@ CREATE TABLE `permission`
 	FOREIGN KEY (`application_id`) REFERENCES `application` (`id`),
 	FOREIGN KEY (`lockowner_id`) REFERENCES `users` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-
+	
 CREATE TABLE `user_role`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`user_id` bigint(20) NOT NULL,
 	`role_id` bigint(20) NOT NULL,
+	`sort_order` INT NOT NULL DEFAULT 1,
+	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_user_role` (`user_id`,`role_id`),
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),

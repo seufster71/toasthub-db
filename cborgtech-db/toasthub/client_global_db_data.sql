@@ -158,3 +158,11 @@ INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_SERVICE_DISABLED'),'This service is currently disabled.','en',true,null);
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_SERVICE_DISABLED'),'Este servicio está actualmente deshabilitado.','es',true,null);
 
+INSERT INTO texts (default_text) VALUES ('Access Denied');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access Denied');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceso denegado');
+INSERT INTO page_text_name (page_name_id,name,text_id,created) VALUES((SELECT id FROM page_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_ACCESS_DENIED',@lastid,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_SERVICE_DISABLED'),'Access Denied.','en',true,null);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered,created) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_SERVICE_DISABLED'),'Acceso denegado','es',true,null);
+

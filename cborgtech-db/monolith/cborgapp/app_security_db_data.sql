@@ -167,10 +167,10 @@ INSERT INTO role (code,title_id,application_id) VALUES ('A',@lastid,(SELECT id F
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MEMAREA'),'R' FROM role WHERE code = 'M';
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MD'),'R' FROM role WHERE code = 'M';
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MA'),'R' FROM role WHERE code = 'M';
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MA'),'W' FROM role WHERE code = 'M';
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MG'),'D' FROM role WHERE code = 'M';
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MS'),'D' FROM role WHERE code = 'M';
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MN'),'R' FROM role WHERE code = 'M';
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MS'),'W' FROM role WHERE code = 'M';
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MN'),'W' FROM role WHERE code = 'M';
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MSM'),'R' FROM role WHERE code = 'M';
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MP'),'R' FROM role WHERE code = 'M';
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ML'),'R' FROM role WHERE code = 'M';

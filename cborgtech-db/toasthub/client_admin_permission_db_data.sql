@@ -84,42 +84,41 @@ INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM pa
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_PERMISSION_PAGE_HEADER'),'Permissions','en',true);
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_PERMISSION_PAGE_HEADER'),'Permisos','es',true);
 
-INSERT INTO texts (default_text) VALUES ('List Column 1');
+-- Admin Permissions Table
+INSERT INTO texts (default_text) VALUES ('Admin Permission Table');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 1');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 1');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_PAGE'),'ADMIN_PERMISSION_PAGE_COLUMN_1',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_1'),'Name','en',true,0);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_1'),'Nombre','es',true,0);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Permission Table');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tabla de permisos de administrador');
+INSERT INTO page_name (name,text_id,category) VALUES ('ADMIN_PERMISSION_TABLE',@lastid,'ADMIN');
 
-INSERT INTO texts (default_text) VALUES ('List Column 2');
+INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 2');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 2');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_PAGE'),'ADMIN_PERMISSION_PAGE_COLUMN_2',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_2'),'Code','en',true,1);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_2'),'Código','es',true,1);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Name');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_NAME',@lastid,'{"fieldML":"title"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_NAME'),'Name','en',true,0);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_NAME'),'Nombre','es',true,0);
 
-INSERT INTO texts (default_text) VALUES ('List Column 3');
+INSERT INTO texts (default_text) VALUES ('Column Code');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 3');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 3');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_PAGE'),'ADMIN_PERMISSION_PAGE_COLUMN_3',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_3'),'Read','en',true,2);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_3'),'Leer','es',true,2);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Code');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Código de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_CODE',@lastid,'{"field":"code"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_CODE'),'Code','en',true,1);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_CODE'),'Código','es',true,1);
 
-INSERT INTO texts (default_text) VALUES ('List Column 4');
+INSERT INTO texts (default_text) VALUES ('Column Rights');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 4');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 4');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_PAGE'),'ADMIN_PERMISSION_PAGE_COLUMN_4',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_4'),'Write','en',true,3);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_4'),'Escribir','es',true,3);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Rights');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Derechos de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_RIGHTS',@lastid,'{"fieldC":"rights","choices":[{"read":"R"},{"write":"W"}]}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_RIGHTS'),'Default Rights','en',true,2);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_RIGHTS'),'Derechos predeterminados','es',true,2);
 
-INSERT INTO texts (default_text) VALUES ('List Column 5');
+INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 5');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 5');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_PAGE'),'ADMIN_PERMISSION_PAGE_COLUMN_5',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_5'),'Status','en',true,4);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_PAGE_COLUMN_5'),'Estado','es',true,4);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_STATUS',@lastid,'{"fieldB":"active"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_STATUS'),'Status','en',true,2);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_STATUS'),'Estado','es',true,2);

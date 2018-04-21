@@ -28,13 +28,12 @@ CREATE TABLE `user_ref`
 	UNIQUE KEY `uk_ref_id` (`ref_id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-	
 CREATE TABLE `category`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`name_id` bigint(20) NOT NULL,
+	`title_id` bigint(20) NOT NULL,
 	`code` varchar(100) NOT NULL,
-	`category_group` varchar(200) NOT NULL,
-	`category_order` INT NOT NULL DEFAULT 1,
+	`category_group` varchar(200) NOT NULL DEFAULT 'ALL',
+	`sort_order` INT NOT NULL DEFAULT 1,
 	`parent_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
@@ -46,9 +45,9 @@ CREATE TABLE `category`
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_code` (`category_group`,`code`),
-	FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`),
+	FOREIGN KEY (`title_id`) REFERENCES `texts` (`id`),
 	FOREIGN KEY (`parent_id`) REFERENCES `category` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
 	
 CREATE TABLE `status`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -204,25 +203,6 @@ CREATE TABLE `bundles`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_bundle_key` (`name`,`domain`,`appuser_id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-	
-CREATE TABLE `categories`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`name_id` bigint(20) NOT NULL,
-	`code` varchar(40) NOT NULL,
-	`parent_id` bigint(20),
-	`sort_order` INT NOT NULL DEFAULT 0,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
 
 CREATE TABLE `page_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,

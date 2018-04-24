@@ -76,6 +76,9 @@ load_base(){
    	echo "Loading client_admin_menu_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_menu_db_data.sql
    	
+   	echo "Loading client_admin_category_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_category_db_data.sql
+   	
    	echo "Loading client_social_aquaintance_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_social_aquaintance_db_data.sql
    	

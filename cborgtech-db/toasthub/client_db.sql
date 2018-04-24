@@ -51,10 +51,10 @@ CREATE TABLE `category`
 	
 CREATE TABLE `status`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`name_id` bigint(20) NOT NULL,
+	`title_id` bigint(20) NOT NULL,
 	`code` varchar(100) NOT NULL,
-	`status_group` varchar(200) NOT NULL,
-	`status_order` INT NOT NULL DEFAULT 1,
+	`status_group` varchar(200) NOT NULL DEFAULT 'ALL',
+	`sort_order` INT NOT NULL DEFAULT 1,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -65,7 +65,7 @@ CREATE TABLE `status`
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_code` (`status_group`,`code`),
-	FOREIGN KEY (`name_id`) REFERENCES `texts` (`id`)
+	FOREIGN KEY (`title_id`) REFERENCES `texts` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `workflow`

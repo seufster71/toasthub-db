@@ -72,7 +72,7 @@ INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Name');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_TABLE'),'ADMIN_CATEGORY_TABLE_NAME',@lastid);
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_TABLE'),'ADMIN_CATEGORY_TABLE_NAME',@lastid,'{"fieldML":"title"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_NAME'),'Name','en',true,0);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_NAME'),'Nombre','es',true,0);
 
@@ -80,7 +80,7 @@ INSERT INTO texts (default_text) VALUES ('Column Code');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Code');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Código de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_CODE'),'ADMIN_CATEGORY_TABLE_CODE',@lastid);
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_TABLE'),'ADMIN_CATEGORY_TABLE_CODE',@lastid,'{"field":"code"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_CODE'),'Code','en',true,1);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_CODE'),'Código','es',true,1);
 
@@ -88,6 +88,6 @@ INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_STATUS'),'ADMIN_CATEGORY_TABLE_STATUS',@lastid);
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_CATEGORY_TABLE'),'ADMIN_CATEGORY_TABLE_STATUS',@lastid,'{"fieldBool":"active"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_STATUS'),'Status','en',true,2);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_CATEGORY_TABLE_STATUS'),'Estado','es',true,2);

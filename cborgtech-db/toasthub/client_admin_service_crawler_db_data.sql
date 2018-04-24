@@ -78,42 +78,49 @@ INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM pa
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_HEADER'),'Services','en',true);
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_HEADER'),'Servicios','es',true);
 
-INSERT INTO texts (default_text) VALUES ('List Column 1');
+-- Admin Service crawler Table
+INSERT INTO texts (default_text) VALUES ('Admin Service Crawler Table');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 1');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 1');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE'),'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_1',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_1'),'Category','en',true,0);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_1'),'Categoría','es',true,0);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Service Crawler Table');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tabla de rastreador de servicio de administración');
+INSERT INTO page_name (name,text_id,category) VALUES ('ADMIN_SERVICE_CRAWLER_TABLE',@lastid,'ADMIN');
 
-INSERT INTO texts (default_text) VALUES ('List Column 2');
+INSERT INTO texts (default_text) VALUES ('Column Category');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 2');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 2');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE'),'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_2',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_2'),'Service name','en',true,1);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_2'),'Nombre del Servicio','es',true,1);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Category');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Categoría de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE'),'ADMIN_SERVICE_CRAWLER_TABLE_CATEGORY',@lastid,'{"field":"category"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_CATEGORY'),'Category','en',true,0);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_CATEGORY'),'Categoría','es',true,0);
 
-INSERT INTO texts (default_text) VALUES ('List Column 3');
+INSERT INTO texts (default_text) VALUES ('Column Service Name');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 3');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 3');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE'),'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_3',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_3'),'API Version','en',true,2);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_3'),'Versión de la API','es',true,2);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Service Name');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre del servicio de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE'),'ADMIN_SERVICE_CRAWLER_TABLE_SERVICENAME',@lastid,'{"field":"serviceName"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_SERVICENAME'),'Service name','en',true,1);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_SERVICENAME'),'Nombre del Servicio','es',true,1);
 
-INSERT INTO texts (default_text) VALUES ('List Column 4');
+INSERT INTO texts (default_text) VALUES ('Column Api Version');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 4');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 4');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE'),'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_4',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_4'),'APP Version','en',true,3);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_4'),'Version de aplicacion','es',true,3);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Api Version');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Versión de columna Api');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE'),'ADMIN_SERVICE_CRAWLER_TABLE_APIVERSION',@lastid,'{"field":"apiVersion"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_APIVERSION'),'API Version','en',true,2);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_APIVERSION'),'Versión de la API','es',true,2);
 
-INSERT INTO texts (default_text) VALUES ('List Column 5');
+INSERT INTO texts (default_text) VALUES ('Column App Version');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','List Column 5');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Columna de lista 5');
-INSERT INTO page_label_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE'),'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_5',@lastid);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_5'),'Status','en',true,4);
-INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_PAGE_COLUMN_5'),'Estado','es',true,4);
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column App Version');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Versión de la aplicación de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE'),'ADMIN_SERVICE_CRAWLER_TABLE_APPVERSION',@lastid,'{"field":"appVersion"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_APPVERSION'),'APP Version','en',true,3);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_APPVERSION'),'Version de aplicacion','es',true,3);
+
+INSERT INTO texts (default_text) VALUES ('Column Status');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado de columna');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE'),'ADMIN_SERVICE_CRAWLER_TABLE_STATUS',@lastid,'{"fieldBool":"active"}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_STATUS'),'Status','en',true,4);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_SERVICE_CRAWLER_TABLE_STATUS'),'Estado','es',true,4);

@@ -111,7 +111,7 @@ INSERT INTO texts (default_text) VALUES ('Column Rights');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Rights');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Derechos de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_RIGHTS',@lastid,'{"fieldC":"rights","choices":[{"read":"R"},{"write":"W"}]}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_RIGHTS',@lastid,'{"field":"rights"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_RIGHTS'),'Default Rights','en',true,2);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_RIGHTS'),'Derechos predeterminados','es',true,2);
 
@@ -119,6 +119,6 @@ INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_STATUS',@lastid,'{"fieldB":"active"}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_PERMISSION_TABLE'),'ADMIN_PERMISSION_TABLE_STATUS',@lastid,'{"fieldBool":"active"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_STATUS'),'Status','en',true,2);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_STATUS'),'Estado','es',true,2);

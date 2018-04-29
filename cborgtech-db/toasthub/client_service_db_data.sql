@@ -19,6 +19,8 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPLABEL_SVC','1.0','1.0','AppLabelAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPOPTION_SVC','1.0','1.0','AppOptionAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPTEXT_SVC','1.0','1.0','AppTextAdminSvc','ADMIN','LOCAL','APR','R');
+
+-- system
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SERVICE_CRAWLER_SVC','1.0','1.0','ServiceCrawlerAdminSvc','ADMIN','LOCAL','ASC','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('CLIENT_DOMAIN_SVC','1.0','1.0','ClientDomainAdminSvc','ADMIN','LOCAL','ACD','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPLICATION_SVC','1.0','1.0','ApplicationAdminSvc','ADMIN','LOCAL','AA','R');

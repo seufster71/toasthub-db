@@ -13,7 +13,7 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access Member Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceder al área de miembros');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MEMAREA',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_RAPID'));
--- member container
+-- member
 INSERT INTO texts (default_text) VALUES ('Member Dashboard');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Member Dashboard');
@@ -54,7 +54,7 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Member Logout');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Cierre de sesión de miembro');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ML',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_RAPID'));
-
+-- Admin
 INSERT INTO texts (default_text) VALUES ('Access Admin Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access Admin Area');
@@ -147,12 +147,22 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Menu');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú Admin');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AM',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
-
+-- System
 INSERT INTO texts (default_text) VALUES ('Access System Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access System Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceso al área del sistema');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SYSAREA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('System Dashboard');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Dashboard');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tablero de System');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('System Submenu');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Submenu');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Submenú System');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SSM',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 INSERT INTO texts (default_text) VALUES ('System Service Crawler');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Service Crawler');
@@ -163,6 +173,11 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Client Domain');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Dominio del cliente del sistema');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SCD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('System Application');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Application');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Dominio del Application');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 -- role
 INSERT INTO texts (default_text) VALUES ('Member');
@@ -213,9 +228,11 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AM' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SYSAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SSM' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SSC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SCD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 -- APP_BUGDOG
 -- applications
@@ -357,11 +374,22 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Menu');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú Admin');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AM',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
 
+-- System
 INSERT INTO texts (default_text) VALUES ('Access System Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access System Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceso al área del sistema');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SYSAREA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+INSERT INTO texts (default_text) VALUES ('System Dashboard');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Dashboard');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tablero de System');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+INSERT INTO texts (default_text) VALUES ('System Submenu');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Submenu');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Submenú System');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SSM',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
 INSERT INTO texts (default_text) VALUES ('System Service Crawler');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Service Crawler');
@@ -372,7 +400,11 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Client Domain');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Dominio del cliente del sistema');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SCD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
-
+INSERT INTO texts (default_text) VALUES ('System Application');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System Application');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Dominio del Application');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('SA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
 
 
 -- role
@@ -422,10 +454,11 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AM' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SYSAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SD' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SSM' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SSC' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SCD' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
-
-
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SA' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 
 -- Base users
 INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgsystem','tpOdfWGybw5Kwp1Xoym3YxLhCKk=','LrS8Hv/zqFw=','admin','admin','admin',33544,'system@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');

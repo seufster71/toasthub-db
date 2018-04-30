@@ -153,92 +153,35 @@ INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) 
 INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'ADMIN_MENU_TOP'),'AM','MENU',4);
 INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU' and menus.code = 'ADMIN_MENU_TOP'),'Menu','/admin-menu','hamburger_green','en',true);
 INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU' and menus.code = 'ADMIN_MENU_TOP'),'Menu','/admin-menu','hamburger_green','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'ADMIN_MENU_TOP'),'ASYS','SYSTEM',5);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSTEM' and menus.code = 'ADMIN_MENU_TOP'),'System','/admin-system','hamburger_green','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSTEM' and menus.code = 'ADMIN_MENU_TOP'),'System','/admin-system','hamburger_green','es',true);
+INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'ADMIN_MENU_TOP'),'SYSAREA','SYSTEM',5);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSTEM' and menus.code = 'ADMIN_MENU_TOP'),'System','/system','hamburger_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSTEM' and menus.code = 'ADMIN_MENU_TOP'),'System','/system','hamburger_green','es',true);
 
 
--- Admin menu for Menus
-INSERT INTO texts (default_text) VALUES ('Admin Menu for Menus');
+-- System menu Top
+INSERT INTO texts (default_text) VALUES ('System menu Top');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Menu for Menus');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú Admin for Menus');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','System menu Top');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','System menu Top');
 
-INSERT INTO menus (code,category,title_id,api_version,app_version) VALUES ('ADMIN_MENU_MENU','ADMIN',@lastid,'1.0','1.0');
+INSERT INTO menus (code,category,title_id,api_version,app_version) VALUES ('SYSTEM_MENU_TOP','ADMIN',@lastid,'1.0','1.0');
 
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_MENU'),'PRM_ADMIN_MENU_MENU_PUBLIC','MENU_PUBLIC',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_PUBLIC' and menus.code = 'ADMIN_MENU_MENU'),'Public','menuPublic','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_PUBLIC' and menus.code = 'ADMIN_MENU_MENU'),'Público','menuPublic','es',true);
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_MENU'),'PRM_ADMIN_MENU_MENU_MEMBER','MENU_MEMBER',1);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_MEMBER' and menus.code = 'ADMIN_MENU_MENU'),'Member','menuMember','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_MEMBER' and menus.code = 'ADMIN_MENU_MENU'),'Miembro','menuMember','es',true);
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_MENU'),'PRM_ADMIN_MENU_MENU_ADMIN','MENU_ADMIN',2);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_ADMIN' and menus.code = 'ADMIN_MENU_MENU'),'Admin','menuAdmin','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'MENU_ADMIN' and menus.code = 'ADMIN_MENU_MENU'),'Admin','menuAdmin','es',true);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSTEM_MENU_TOP'),'SD','HOME',0);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'HOME' and menus.code = 'SYSTEM_MENU_TOP'),'Home','/system','home_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'HOME' and menus.code = 'SYSTEM_MENU_TOP'),'Página de inicio','/system','home_green','es',true);
 
--- Admin menu for System
-INSERT INTO texts (default_text) VALUES ('Admin Menu for System');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Menu for System');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú Admin for System');
-
-INSERT INTO menus (code,category,title_id,api_version,app_version) VALUES ('ADMIN_MENU_SYSTEM','ADMIN',@lastid,'1.0','1.0');
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_SYSTEM'),'PRM_ADMIN_MENU_SYSTEM_CLIENT_DOMAIN','CLIENT_DOMAIN',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENT_DOMAIN' and menus.code = 'ADMIN_MENU_SYSTEM'),'Client Domain','clientDomain','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENT_DOMAIN' and menus.code = 'ADMIN_MENU_SYSTEM'),'Dominio del cliente','clientDomain','es',true);
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'ADMIN_MENU_SYSTEM'),'PRM_ADMIN_MENU_SYSTEM_APPLICATION','APPLICATION',1);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'APPLICATION' and menus.code = 'ADMIN_MENU_SYSTEM'),'Application','application','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'APPLICATION' and menus.code = 'ADMIN_MENU_SYSTEM'),'Solicitud','application','es',true);
+INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSTEM_MENU_TOP'),'SSM','SUBMENU',1);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SUBMENU' and menus.code = 'SYSTEM_MENU_TOP'),'Other','/system-other','hamburger_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SUBMENU' and menus.code = 'SYSTEM_MENU_TOP'),'Other','/system-other','hamburger_green','es',true);
+INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSTEM_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'SYSTEM_MENU_TOP'),'SCD','CLIENT_DOMAIN',0);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENT_DOMAIN' and menus.code = 'SYSTEM_MENU_TOP'),'Client Domain','/system-clientdomain','home_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENT_DOMAIN' and menus.code = 'SYSTEM_MENU_TOP'),'Dominio del cliente','/system-clientdomain','home_green','es',true);
+INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSTEM_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'SYSTEM_MENU_TOP'),'SSC','SERVICES',1);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SERVICES' and menus.code = 'SYSTEM_MENU_TOP'),'Services','/system-services','home_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SERVICES' and menus.code = 'SYSTEM_MENU_TOP'),'Servicios','/system-services','home_green','es',true);
+INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSTEM_MENU_TOP'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SUBMENU' and menus.code = 'SYSTEM_MENU_TOP'),'SA','APPLICATION',2);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'APPLICATION' and menus.code = 'SYSTEM_MENU_TOP'),'Application','/system-application','home_green','en',true);
+INSERT INTO menu_item_values (menu_item_id,menu_value,href,image,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'APPLICATION' and menus.code = 'SYSTEM_MENU_TOP'),'Solicitud','/system-application','home_green','es',true);
 
 
--- SysAdmin menu Right
-INSERT INTO texts (default_text) VALUES ('Default SysAdmin Menu Right');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default SysAdmin Menu Right');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Derecha SysAdmin Menú miembro');
-
-INSERT INTO menus (code,category,title_id,api_version,app_version) VALUES ('SYSADMIN_MENU_RIGHT','SYSADMIN',@lastid,'1.0','1.0');
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_RIGHT'),'PRM_SYSADMIN_MENU_RIGHT_SYSADMIN','SYSADMIN',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Admin','','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Admin','','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_RIGHT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_RIGHT'),'PRM_SYSADMIN_MENU_RIGHT_PROFILE','PROFILE',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PROFILE' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Profile','/sysadmin/index.html?page=profile','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PROFILE' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Perfil','/sysadmin/index.html?page=profile','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_RIGHT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_RIGHT'),'PRM_SYSADMIN_MENU_RIGHT_LOGOUT','LOGOUT',1);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'LOGOUT' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Logout','/sysadmin/logout.html','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'LOGOUT' and menus.code = 'SYSADMIN_MENU_RIGHT'),'Cerrar sesión','/sysadmin/logout.html','es',true);
-
--- System Admin Left
-INSERT INTO texts (default_text) VALUES ('Default SysAdmin Menu Left');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default SysAdmin Menu Left');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menu SysAdmin de Izquierda');
-
-INSERT INTO menus (code,category,title_id,api_version,app_version) VALUES ('SYSADMIN_MENU_LEFT','SYSADMIN',@lastid,'1.0','1.0');
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYSADMIN','SYSADMIN',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_LEFT'),'Home','/sysadmin/index.html','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYSADMIN' and menus.code = 'SYSADMIN_MENU_LEFT'),'Home','/sysadmin/index.html?lang=es','es',true);
-
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_CLIENTMGMT','CLIENTMGMT',1);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENTMGMT' and menus.code = 'SYSADMIN_MENU_LEFT'),'Client Management','','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'CLIENTMGMT' and menus.code = 'SYSADMIN_MENU_LEFT'),'Client Management','','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'CLIENTMGMT' and menus.code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYS_CLIENTS','SYS_CLIENTS',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_CLIENTS' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Clients','/sysadmin/index.html?page=clients','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_CLIENTS' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Clients','/sysadmin/index.html?page=clients&lang=es','es',true);
-
-INSERT INTO menu_items (menu_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_PREFERENCES','PREFERENCES',2);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'Preferences','','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'Preferences','','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYS_FORMS','SYS_FORMS',0);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_FORMS' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Forms','/sysadmin/index.html?page=forms','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_FORMS' and menus.code = 'SYSADMIN_MENU_LEFT'),'Formas del sistema','/sysadmin/index.html?page=forms&lang=es','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYS_LABELS','SYS_LABELS',1);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_LABELS' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Labels','/sysadmin/index.html?page=labels','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_LABELS' and menus.code = 'SYSADMIN_MENU_LEFT'),'Las etiquetas del sistema','/sysadmin/index.html?page=labels&lang=es','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYS_TEXT','SYS_TEXT',2);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_TEXT' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Text','/sysadmin/index.html?page=text','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_TEXT' and menus.code = 'SYSADMIN_MENU_LEFT'),'Texto sistema','/sysadmin/index.html?page=text&lang=es','es',true);
-INSERT INTO menu_items (menu_id,parent_id,permission_code,code,sort_order) VALUES ((SELECT id FROM menus WHERE code = 'SYSADMIN_MENU_LEFT'),(SELECT item.id FROM menu_items AS item JOIN menus ON item.menu_id = menus.id WHERE item.code = 'PREFERENCES' and menus.code = 'SYSADMIN_MENU_LEFT'),'PRM_SYSADMIN_MENU_LEFT_SYS_OPTIONS','SYS_OPTIONS',3);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_OPTIONS' and menus.code = 'SYSADMIN_MENU_LEFT'),'System Options','/sysadmin/index.html?page=options','en',true);
-INSERT INTO menu_item_values (menu_item_id,menu_value,href,lang,rendered) VALUES ((SELECT menu_items.id FROM menu_items JOIN menus on menu_items.menu_id = menus.id WHERE menu_items.code = 'SYS_OPTIONS' and menus.code = 'SYSADMIN_MENU_LEFT'),'Opciones del sistema','/sysadmin/index.html?page=options&lang=es','es',true);
 

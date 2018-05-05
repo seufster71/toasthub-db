@@ -18,3 +18,5 @@ GRANT SELECT,INSERT,UPDATE,DELETE ON cborgapp_main.* TO 'toasthub'@'localhost';
 FLUSH PRIVILEGES;
 
 
+CREATE SCHEMA `cborgapp_cborgtech` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+CREATE SCHEMA `cborgapp_main` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;

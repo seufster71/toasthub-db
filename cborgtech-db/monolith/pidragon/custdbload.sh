@@ -47,7 +47,7 @@ load_base(){
 	}
 	
 all() {
-	load_base cborgapp_cborgtech localhost cyborg c7b8rg
+	load_base pidragon_cborgtech localhost cyborg c7b8rg
 	}
 	
 all

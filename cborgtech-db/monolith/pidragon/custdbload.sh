@@ -38,7 +38,7 @@ load_base(){
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_user_profile_db_data.sql
    	
    	echo "Loading client_service_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_service_db_data.sql
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < client_service_db_data.sql
 
    	echo "Loading admin_db_data.sql to ${1}"
 	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/admin_db_data.sql

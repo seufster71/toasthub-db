@@ -195,6 +195,6 @@ INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado de columna');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_MENU_TABLE'),'ADMIN_MENU_TABLE_STATUS',@lastid,'{"fieldB":"active"}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_MENU_TABLE'),'ADMIN_MENU_TABLE_STATUS',@lastid,'{"fieldBool":"active"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_MENU_TABLE_STATUS'),'Status','en',true,4);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_MENU_TABLE_STATUS'),'Estado','es',true,4);

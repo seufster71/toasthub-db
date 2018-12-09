@@ -163,16 +163,16 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','SMTP Gateway User');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','SMTP Gateway User');
 INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'GLOBAL_OPTIONS'),'GLOBAL_OPTIONS_SMTP_GATEWAY_USER',@lastid);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_USER'),'seufster@gmail.com','en',true);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_USER'),'seufster@gmail.com','es',true);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_USER'),'toasthub@gmail.com','en',true);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_USER'),'toathub@gmail.com','es',true);
 
 INSERT INTO texts (default_text) VALUES ('SMTP Gateway Password');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','SMTP Gateway Password');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','SMTP Gateway Password');
 INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'GLOBAL_OPTIONS'),'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD',@lastid);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'seufster@gmail.com','en',true);
-INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'seufster@gmail.com','es',true);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'toasthub#1','en',true);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'toasthub#1','es',true);
 
 -- Global Service
 INSERT INTO texts (default_text) VALUES ('Global Service');

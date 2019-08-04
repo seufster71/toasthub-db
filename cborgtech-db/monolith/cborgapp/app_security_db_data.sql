@@ -461,7 +461,8 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SA' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 
 -- Base users
-INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgsystem','tpOdfWGybw5Kwp1Xoym3YxLhCKk=','LrS8Hv/zqFw=','admin','admin','admin',33544,'system@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
+-- Run88Fast#
+INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgsystem','$2a$04$lfgRCoRLlMDY0MrUN0T4VOUHCIwH1DyePvnyQzq4X2L3CiFDQJEZG','LrS8Hv/zqFw=','admin','admin','admin',33544,'system@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='S' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),1 FROM users WHERE username='cborgsystem';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),2 FROM users WHERE username='cborgsystem';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),3 FROM users WHERE username='cborgsystem';
@@ -469,13 +470,13 @@ INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM rol
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),2 FROM users WHERE username='cborgsystem';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),3 FROM users WHERE username='cborgsystem';
 
-INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgadmin','tpOdfWGybw5Kwp1Xoym3YxLhCKk=','LrS8Hv/zqFw=','admin','admin','admin',33544,'guru@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
+INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgadmin','$2a$04$lfgRCoRLlMDY0MrUN0T4VOUHCIwH1DyePvnyQzq4X2L3CiFDQJEZG','LrS8Hv/zqFw=','admin','admin','admin',33544,'guru@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),1 FROM users WHERE username='cborgadmin';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),2 FROM users WHERE username='cborgadmin';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),1 FROM users WHERE username='cborgadmin';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),2 FROM users WHERE username='cborgadmin';
 
 
-INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgmember','tpOdfWGybw5Kwp1Xoym3YxLhCKk=','LrS8Hv/zqFw=','member','member','member',33544,'member@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
+INSERT INTO users (username,password,salt,firstname,middlename,lastname,zipcode,email,session_token,email_token,email_confirm,is_active,lang) VALUES ('cborgmember','$2a$04$lfgRCoRLlMDY0MrUN0T4VOUHCIwH1DyePvnyQzq4X2L3CiFDQJEZG','LrS8Hv/zqFw=','member','member','member',33544,'member@cborgtech.com','QcyiKaCZipA=','PUaxya0BS+00',1,1,'en');
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),1 FROM users WHERE username='cborgmember';
 INSERT INTO user_role (user_id,role_id,sort_order) SELECT id,(SELECT id FROM role WHERE code='M' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),1 FROM users WHERE username='cborgmember';

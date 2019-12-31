@@ -52,7 +52,7 @@ CREATE TABLE `users`
 	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	`created` datetime DEFAULT CURRENT_TIMESTAMP,
 	`lock_time` datetime,
-	`last_pass_change` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`last_pass_change` datetime DEFAULT CURRENT_TIMESTAMP,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_userpass` (`username`),

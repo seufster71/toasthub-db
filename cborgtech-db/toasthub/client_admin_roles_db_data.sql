@@ -25,9 +25,9 @@ INSERT INTO texts (default_text) VALUES ('Application');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Application');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Solicitud');
-INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_FORM'),'ADMIN_ROLE_FORM_APPLICATION',@lastid,'SLT','text',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.Role","field":"application","type":"Object","method":"setApplication"}','');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_FORM_APPLICATION'),'','','en',true,true,2,'');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_FORM_APPLICATION'),'','','es',true,true,2,'');
+INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_FORM'),'ADMIN_ROLE_FORM_APPLICATION',@lastid,'SLT','text',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.Role","field":"application","type":"Long","method":"setApplicationId","fieldChild":{"clazz":"org.toasthub.core.general.model.Application","type":"Object"}}','');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_FORM_APPLICATION'),'','Application:','en',true,true,2,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_FORM_APPLICATION'),'','Solicitud','es',true,true,2,'');
 
 INSERT INTO texts (default_text) VALUES ('Status');
 SET @lastid = LAST_INSERT_ID();

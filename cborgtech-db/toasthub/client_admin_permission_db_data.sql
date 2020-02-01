@@ -157,5 +157,43 @@ INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_PERMISSION_TABLE_OPTIONS'),'Options','es',true,9);
 
 
+-- RolePermissions ----------------------------------------------------------------------
+INSERT INTO texts (default_text) VALUES ('Admin Role Permission Form');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Role Permission Form');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de permiso de rol de administrador');
+INSERT INTO page_name (name,text_id,category) VALUES ('ADMIN_ROLE_PERMISSION_FORM',@lastid,'ADMIN');
+
+INSERT INTO texts (default_text) VALUES ('Rights');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Rights');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Derechos de usuario');
+INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM'),'ADMIN_ROLE_PERMISSION_FORM_RIGHTS',@lastid,'SLT','select',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.RolePermission","field":"rights","type":"String"}','');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_RIGHTS'),'{"options":[{"value":"R","text":"Read","defaultInd":true},{"value":"W","text":"Write"}]}','Rights:','en',true,true,1,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_RIGHTS'),'{"options":[{"value":"R","text":"Leer","defaultInd":true},{"value":"W","text":"Escribir"}]}','Derechos de usuario:','es',true,true,1,'');
+
+INSERT INTO texts (default_text) VALUES ('Start Date');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Start Date');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Fecha de inicio');
+INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM'),'ADMIN_ROLE_PERMISSION_FORM_STARTDATE',@lastid,'DATE','date',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.RolePermission","field":"startDate","type":"Date"}','');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_STARTDATE'),'','Start Date:','en',true,true,2,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_STARTDATE'),'','Fecha de inicio:','es',true,true,2,'');
+
+INSERT INTO texts (default_text) VALUES ('End Date');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','End Date');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Fecha final');
+INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM'),'ADMIN_ROLE_PERMISSION_FORM_ENDDATE',@lastid,'DATE','date',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.RolePermission","field":"endDate","type":"Date"}','');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_ENDDATE'),'','End Date:','en',true,true,3,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_ENDDATE'),'','Derechos de usuario:','es',true,true,3,'');
+
+INSERT INTO texts (default_text) VALUES ('Active');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Active');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Activo');
+INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM'),'ADMIN_ROLE_PERMISSION_FORM_ACTIVE',@lastid,'BLN','radioH',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.security.model.RolePermission","field":"active","type":"Boolean"}');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_ACTIVE'),'{"options":[{"value":true,"label":"Active","defaultInd":true},{"value":false,"label":"Disable"}]}','Status:','en',true,true,4,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_ROLE_PERMISSION_FORM_ACTIVE'),'{"options":[{"value":true,"label":"Activo","defaultInd":true},{"value":false,"label":"Inhabilitar"}]}','Estado:','es',true,true,4,'');
 
 

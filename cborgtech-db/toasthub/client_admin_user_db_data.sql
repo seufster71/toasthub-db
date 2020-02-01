@@ -177,7 +177,7 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_USER_TABLE'),'ADMIN_USER_TABLE_OPTIONS',@lastid,'{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o","permission":{"AUEU":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash","permission":{"AUDU":"W"},"label":{"en":"Delete"}},{"icon":"option3","classField":"fa fa-key","permission":{"AUR":"R"},"label":{"en":"Roles"}}]}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_USER_TABLE'),'ADMIN_USER_TABLE_OPTIONS',@lastid,'{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o","permission":{"AUEU":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash","permission":{"AUDU":"W"},"label":{"en":"Delete"}},{"icon":"option3","classField":"fa fa-users","permission":{"AUR":"R"},"label":{"en":"Roles"}}]}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_USER_TABLE_OPTIONS'),'Options','en',true,5);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_USER_TABLE_OPTIONS'),'Options','es',true,5);
 

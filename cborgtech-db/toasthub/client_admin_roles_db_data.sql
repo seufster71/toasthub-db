@@ -53,6 +53,14 @@ INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM pa
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_ROLE_PAGE_HEADER'),'Roles','en',true);
 INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_ROLE_PAGE_HEADER'),'Permisos','es',true);
 
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con padre');
+INSERT INTO page_text_name (page_name_id,name,text_id) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_ROLE_PAGE'),'ADMIN_ROLE_PAGE_HEADER_PARENT',@lastid);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_ROLE_PAGE_HEADER_PARENT'),'Roles for User: ','en',true);
+INSERT INTO page_text_value (page_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM page_text_name WHERE name = 'ADMIN_ROLE_PAGE_HEADER_PARENT'),'Roles para la usuaria:','es',true);
+
 -- Admin Roles Table
 INSERT INTO texts (default_text) VALUES ('Admin Role Table');
 SET @lastid = LAST_INSERT_ID();

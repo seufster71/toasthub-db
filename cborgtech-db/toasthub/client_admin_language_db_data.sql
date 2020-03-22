@@ -35,16 +35,16 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Código');
 INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_FORM'),'ADMIN_LANGUAGE_FORM_DEFAULT',@lastid,'BLN','radioH',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.core.general.model.Language","field":"defaultLang","type":"Boolean"}');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DEFAULT'),'{"options":[{"value":true,"label":"Yes","defaultInd":true},{"value":false,"label":"No"}]}','Default:','en',true,true,3,'');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DEFAULT'),'{"options":[{"value":true,"label":"Sí","defaultInd":true},{"value":false,"label":"No"}]}','Defecto:','es',true,true,3,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DEFAULT'),'{"options":[{"value":true,"label":"Yes"},{"value":false,"label":"No","defaultInd":true}]}','Default:','en',true,true,3,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DEFAULT'),'{"options":[{"value":true,"label":"Sí"},{"value":false,"label":"No","defaultInd":true}]}','Defecto:','es',true,true,3,'');
 
 INSERT INTO texts (default_text) VALUES ('Direction');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Direction');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Código');
 INSERT INTO page_form_field_name (page_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_FORM'),'ADMIN_LANGUAGE_FORM_DIRECTION',@lastid,'SLT','text',0,0,null,'MAIN',null,'{"clazz":"org.toasthub.core.general.model.Language","field":"dir","type":"String"}');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DIRECTION'),'{"options":[{"value":"ltr","label":"Left-to-right","defaultInd":true},{"value":"rtl","label":"Right-to-left"}]}','Direction:','en',true,true,4,'');
-INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DIRECTION'),'{"options":[{"value":"ltr","label":"De izquierda a derecha","defaultInd":true},{"value":"rtl","label":"De derecha a izquierda"}]}','Dirección:','es',true,true,4,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DIRECTION'),'{"options":[{"value":"ltr","text":"Left-to-right","defaultInd":true},{"value":"rtl","text":"Right-to-left"}]}','Direction:','en',true,true,4,'');
+INSERT INTO page_form_field_value (page_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM page_form_field_name WHERE name = 'ADMIN_LANGUAGE_FORM_DIRECTION'),'{"options":[{"value":"ltr","text":"De izquierda a derecha","defaultInd":true},{"value":"rtl","text":"De derecha a izquierda"}]}','Dirección:','es',true,true,4,'');
 
 
 -- Admin Language Page
@@ -88,7 +88,8 @@ INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Column Status');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_STATUS',@lastid,'{"fieldBool":"active"}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_STATUS',@lastid,'{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}');
+
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_STATUS'),'Status','en',true,2);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_STATUS'),'Estado','es',true,2);
 
@@ -96,7 +97,7 @@ INSERT INTO texts (default_text) VALUES ('Column Default');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Default');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Valor predeterminado de la columna');
-INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_DEFAULT',@lastid,'{"fieldBool":"defaultLang"}');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_DEFAULT',@lastid,'{"fieldBool":"defaultLang","labelTrue":{"defaultText":"Yes","en":"Yes","es":"Si"},"labelFalse":{"defaultText":"No","en":"No","es":"No"}}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_DEFAULT'),'Default','en',true,3);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_DEFAULT'),'Defecto','es',true,3);
 
@@ -107,3 +108,11 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Dirección de Co
 INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_DIRECTION',@lastid,'{"field":"dir"}');
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_DIRECTION'),'Direction','en',true,4);
 INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_DIRECTION'),'Dirección','es',true,4);
+
+INSERT INTO texts (default_text) VALUES ('Column Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
+INSERT INTO page_label_name (page_name_id,name,text_id,optional_params) VALUES((SELECT id FROM page_name WHERE name = 'ADMIN_LANGUAGE_TABLE'),'ADMIN_LANGUAGE_TABLE_OPTIONS',@lastid,'{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}');
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_OPTIONS'),'Options','en',true,9);
+INSERT INTO page_label_value (page_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM page_label_name WHERE name = 'ADMIN_LANGUAGE_TABLE_OPTIONS'),'Options','es',true,9);

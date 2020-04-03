@@ -204,8 +204,31 @@ CREATE TABLE `bundles`
 	UNIQUE KEY `uk_bundle_key` (`name`,`domain`,`appuser_id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_name`
+CREATE TABLE `pref_product`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`text_id` bigint(20) NOT NULL,
+	`product` varchar(100) NOT NULL DEFAULT 'GLOBAL',
+	`product_version` INT NOT NULL DEFAULT 1,
+	`product_region` varchar(100) NOT NULL DEFAULT 'GLOBAL',
+	`inherit_product` varchar(100) DEFAULT NULL,
+	`inherit_product_version` INT DEFAULT NULL,
+	`inherit_product_region` varchar(100) DEFAULT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_id` (`product`,`product_version`,`product_region`),
+	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
+	
+CREATE TABLE `pref_name`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`product_version_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`category` varchar(20) NOT NULL,
@@ -218,13 +241,14 @@ CREATE TABLE `page_name`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_page_name` (`name`),
-	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`)
+	UNIQUE KEY `uk_pref_name` (`name`),
+	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
+	FOREIGN KEY (`product_version_id`) REFERENCES `pref_product` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 			
-CREATE TABLE `page_form_field_name`
+CREATE TABLE `pref_form_field_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_name_id` bigint(20) NOT NULL,
+	`pref_name_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`field_type` varchar(25) NOT NULL,
@@ -246,14 +270,14 @@ CREATE TABLE `page_form_field_name`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_page_form_field_name` (`name`),
+	UNIQUE KEY `uk_pref_form_field_name` (`name`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`page_name_id`) REFERENCES `page_name` (`id`)
+	FOREIGN KEY (`pref_name_id`) REFERENCES `pref_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 			
-CREATE TABLE `page_form_field_value`
+CREATE TABLE `pref_form_field_value`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_form_field_name_id` bigint(20) NOT NULL,
+	`pref_form_field_name_id` bigint(20) NOT NULL,
 	`field_value` text DEFAULT NULL,
 	`field_label` varchar(512) DEFAULT NULL,
 	`lang` varchar(5) NOT NULL,
@@ -272,16 +296,17 @@ CREATE TABLE `page_form_field_value`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`page_form_field_name_id`) REFERENCES `page_form_field_name` (`id`),
-	FOREIGN KEY (`sub_element_id`) REFERENCES `page_form_field_value` (`id`)
+	FOREIGN KEY (`pref_form_field_name_id`) REFERENCES `pref_form_field_name` (`id`),
+	FOREIGN KEY (`sub_element_id`) REFERENCES `pref_form_field_value` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_label_name`
+CREATE TABLE `pref_label_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_name_id` bigint(20) NOT NULL,
+	`pref_name_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`class_name` varchar(120),
+	`group_name` varchar(48),
 	`tab_index` int DEFAULT 1,
 	`optional_params` text DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
@@ -293,14 +318,14 @@ CREATE TABLE `page_label_name`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_page_label_name` (`name`),
+	UNIQUE KEY `uk_pref_label_name` (`name`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`page_name_id`) REFERENCES `page_name` (`id`)
+	FOREIGN KEY (`pref_name_id`) REFERENCES `pref_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_label_value`
+CREATE TABLE `pref_label_value`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_label_name_id` bigint(20) NOT NULL,
+	`pref_label_name_id` bigint(20) NOT NULL,
 	`label_value` varchar(120) DEFAULT NULL,
 	`lang` char(5) NOT NULL,
 	`rendered` bit(1) NOT NULL DEFAULT 1,
@@ -314,12 +339,12 @@ CREATE TABLE `page_label_value`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`page_label_name_id`) REFERENCES `page_label_name` (`id`)
+	FOREIGN KEY (`pref_label_name_id`) REFERENCES `pref_label_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_text_name`
+CREATE TABLE `pref_text_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_name_id` bigint(20) NOT NULL,
+	`pref_name_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`class_name` varchar(120),
@@ -334,14 +359,14 @@ CREATE TABLE `page_text_name`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_page_text_name` (`name`),
+	UNIQUE KEY `uk_pref_text_name` (`name`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`page_name_id`) REFERENCES `page_name` (`id`)
+	FOREIGN KEY (`pref_name_id`) REFERENCES `pref_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_text_value`
+CREATE TABLE `pref_text_value`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_text_name_id` bigint(20) NOT NULL,
+	`pref_text_name_id` bigint(20) NOT NULL,
 	`text_value` longtext,
 	`lang` varchar(5) NOT NULL,
 	`rendered` bit(1) NOT NULL DEFAULT 1,
@@ -354,12 +379,12 @@ CREATE TABLE `page_text_value`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`page_text_name_id`) REFERENCES `page_text_name` (`id`)
+	FOREIGN KEY (`pref_text_name_id`) REFERENCES `pref_text_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_option_name`
+CREATE TABLE `pref_option_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_name_id` bigint(20) NOT NULL,
+	`pref_name_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`optional_params` text DEFAULT NULL,
@@ -375,14 +400,14 @@ CREATE TABLE `page_option_name`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_page_option_name` (`name`),
+	UNIQUE KEY `uk_pref_option_name` (`name`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`page_name_id`) REFERENCES `page_name` (`id`)
+	FOREIGN KEY (`pref_name_id`) REFERENCES `pref_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `page_option_value` 
+CREATE TABLE `pref_option_value` 
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`page_option_name_id` bigint(20) NOT NULL,
+	`pref_option_name_id` bigint(20) NOT NULL,
 	`option_value` longtext,
 	`lang` varchar(5) NOT NULL,
 	`rendered` bit(1) NOT NULL DEFAULT 1,
@@ -396,7 +421,7 @@ CREATE TABLE `page_option_value`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`page_option_name_id`) REFERENCES `page_option_name` (`id`)
+	FOREIGN KEY (`pref_option_name_id`) REFERENCES `pref_option_name` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 			
 CREATE TABLE `activities` 
@@ -887,3 +912,10 @@ CREATE TABLE `service_class`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_service_name` (`service_name`,`api_version`,`app_version`,`category`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+
+-- Base Product
+INSERT INTO texts (default_text) VALUES ('Default Product Global');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default Product Global');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Producto predeterminado global');
+INSERT INTO pref_product (text_id,product,product_version,product_region) VALUES (@lastid,'GLOBAL',1,'GLOBAL');

@@ -3,22 +3,21 @@
 -- admin
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('ADMIN_SVC','1.0','1.0','AdminSvc','ADMIN','LOCAL','ADMAREA','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('MENU_SVC','1.0','1.0','MenuAdminSvc','ADMIN','LOCAL','AM','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPPAGE_SVC','1.0','1.0','AppPageAdminSvc','ADMIN','LOCAL','APR','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_SVC','1.0','1.0','PrefAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('FORM_SVC','1.0','1.0','FormAdminSvc','ADMIN','LOCAL','AF','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('LANGUAGE_SVC','1.0','1.0','LanguageAdminSvc','ADMIN','LOCAL','AL','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('USERS_SVC','1.0','1.0','UsersAdminSvc','ADMIN','LOCAL','AU','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('MAIL_SVC','1.0','1.0','MailSvc','ADMIN','LOCAL','AMA','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PAGE_OPTIONS_SVC','1.0','1.0','PageOptionsSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('LOGOUT_SVC','1.0','1.0','LogOutSvc','ADMIN','LOCAL','ALO','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('CATEGORY_SVC','1.0','1.0','CategoryAdminSvc','ADMIN','LOCAL','AC','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('STATUS_SVC','1.0','1.0','StatusAdminSvc','ADMIN','LOCAL','AS','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('WORKFLOW_SVC','1.0','1.0','WorkFlowSvc','ADMIN','LOCAL','AW','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('ROLES_SVC','1.0','1.0','RoleAdminSvc','ADMIN','LOCAL','AR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PERMISSIONS_SVC','1.0','1.0','PermissionAdminSvc','ADMIN','LOCAL','AP','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPFORMFIELD_SVC','1.0','1.0','AppFormFieldAdminSvc','ADMIN','LOCAL','APR','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPLABEL_SVC','1.0','1.0','AppLabelAdminSvc','ADMIN','LOCAL','APR','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPOPTION_SVC','1.0','1.0','AppOptionAdminSvc','ADMIN','LOCAL','APR','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPTEXT_SVC','1.0','1.0','AppTextAdminSvc','ADMIN','LOCAL','APR','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_FORMFIELD_SVC','1.0','1.0','PrefFormFieldAdminSvc','ADMIN','LOCAL','APR','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_LABEL_SVC','1.0','1.0','PrefLabelAdminSvc','ADMIN','LOCAL','APR','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_OPTION_SVC','1.0','1.0','PrefOptionAdminSvc','ADMIN','LOCAL','APR','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_TEXT_SVC','1.0','1.0','PrefTextAdminSvc','ADMIN','LOCAL','APR','R');
 
 -- public
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PUBLIC_SVC','1.0','1.0','PublicSvc','PUBLIC','LOCAL','APR','R');

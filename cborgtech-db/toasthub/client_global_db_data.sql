@@ -5,7 +5,7 @@ INSERT INTO texts (default_text) VALUES ('Global Page');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Global Page');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Página Global');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'GLOBAL_PAGE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'GLOBAL_PAGE',@lastid,'PUBLIC');
 
 -- Paging texts
 INSERT INTO texts (default_text) VALUES ('Paging Prev');
@@ -156,7 +156,7 @@ INSERT INTO texts (default_text) VALUES ('Global Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Global Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opciones globales');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'GLOBAL_OPTIONS',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'GLOBAL_OPTIONS',@lastid,'ADMIN');
 
 INSERT INTO texts (default_text) VALUES ('SMTP Gateway User');
 SET @lastid = LAST_INSERT_ID();
@@ -179,7 +179,7 @@ INSERT INTO texts (default_text) VALUES ('Global Service');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Global Service');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Servicio Global');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'GLOBAL_SERVICE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'GLOBAL_SERVICE',@lastid,'PUBLIC');
 
 INSERT INTO texts (default_text) VALUES ('Validation Error');
 SET @lastid = LAST_INSERT_ID();

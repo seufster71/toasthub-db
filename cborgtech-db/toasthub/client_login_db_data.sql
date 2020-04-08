@@ -4,7 +4,7 @@ INSERT INTO texts (default_text) VALUES ('Login Page');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Login Page');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de acceso');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'LOGIN_PAGE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'LOGIN_PAGE',@lastid,'PUBLIC');
 
 -- Form Field  Login
 INSERT INTO texts (default_text) VALUES ('User name');
@@ -77,7 +77,7 @@ INSERT INTO texts (default_text) VALUES ('Login Service');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Login Service');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Servicio de Inicio de Sesión');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'LOGIN_SERVICE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'LOGIN_SERVICE',@lastid,'PUBLIC');
 
 INSERT INTO texts (default_text) VALUES ('Bad username');
 SET @lastid = LAST_INSERT_ID();

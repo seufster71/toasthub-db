@@ -3,7 +3,7 @@ INSERT INTO texts (default_text) VALUES ('Social Location Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Social Location Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Social Área de Localización');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'SOCIAL_LOCATION',@lastid,'MEMBER');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'SOCIAL_LOCATION',@lastid,'MEMBER');
 
 -- Form
 INSERT INTO texts (default_text) VALUES ('Location Form - Provider');

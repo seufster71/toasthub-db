@@ -3,7 +3,7 @@ INSERT INTO texts (default_text) VALUES ('Social Library Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Social Library Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Biblioteca Área Social');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'SOCIAL_LIBRARY',@lastid,'MEMBER');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'SOCIAL_LIBRARY',@lastid,'MEMBER');
 
 -- Form
 INSERT INTO texts (default_text) VALUES ('Library Form - Name');

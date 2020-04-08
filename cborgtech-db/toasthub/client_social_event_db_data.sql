@@ -3,7 +3,7 @@ INSERT INTO texts (default_text) VALUES ('Social Event Area');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Social Event Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Área para eventos sociales');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'SOCIAL_EVENT',@lastid,'MEMBER');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'SOCIAL_EVENT',@lastid,'MEMBER');
 
 -- Form
 INSERT INTO texts (default_text) VALUES ('Event Form - Message');

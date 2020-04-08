@@ -4,7 +4,7 @@ INSERT INTO texts (default_text) VALUES ('Menu item form');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Menu item form');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de elemento de menú');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'ADMIN_MENU_PAGE',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'ADMIN_MENU_PAGE',@lastid,'ADMIN');
 
 INSERT INTO texts (default_text) VALUES ('Code');
 SET @lastid = LAST_INSERT_ID();

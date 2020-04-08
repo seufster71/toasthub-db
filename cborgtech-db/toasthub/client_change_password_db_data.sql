@@ -4,7 +4,7 @@ INSERT INTO texts (default_text) VALUES ('Password change Page');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Password change Page');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Página de cambio de contraseña');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'PASSWORD_CHANGE_PAGE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'PASSWORD_CHANGE_PAGE',@lastid,'PUBLIC');
 
 -- Form Field Password Change
 INSERT INTO texts (default_text) VALUES ('User name');
@@ -53,7 +53,7 @@ INSERT INTO texts (default_text) VALUES ('Password change Service');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Password change Service');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Cambio de contraseña Servicio');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'PASSWORD_CHANGE_SERVICE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'PASSWORD_CHANGE_SERVICE',@lastid,'PUBLIC');
 
 INSERT INTO texts (default_text) VALUES ('Email Verify');
 SET @lastid = LAST_INSERT_ID();

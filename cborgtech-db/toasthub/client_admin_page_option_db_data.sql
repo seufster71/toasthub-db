@@ -4,7 +4,7 @@ INSERT INTO texts (default_text) VALUES ('Admin Option Form');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Option Form');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de opción de administración');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'ADMIN_OPTION_PAGE',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'ADMIN_OPTION_PAGE',@lastid,'ADMIN');
 
 -- Option 
 INSERT INTO texts (default_text) VALUES ('Name');

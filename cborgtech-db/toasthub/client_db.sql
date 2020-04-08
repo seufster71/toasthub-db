@@ -207,10 +207,10 @@ CREATE TABLE `bundles`
 CREATE TABLE `pref_product`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`text_id` bigint(20) NOT NULL,
-	`product` varchar(100) NOT NULL DEFAULT 'GLOBAL',
+	`product_code` varchar(100) NOT NULL DEFAULT 'GLOBAL',
 	`product_version` INT NOT NULL DEFAULT 1,
 	`product_region` varchar(100) NOT NULL DEFAULT 'GLOBAL',
-	`inherit_product` varchar(100) DEFAULT NULL,
+	`inherit_product_code` varchar(100) DEFAULT NULL,
 	`inherit_product_version` INT DEFAULT NULL,
 	`inherit_product_region` varchar(100) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
@@ -222,13 +222,13 @@ CREATE TABLE `pref_product`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_id` (`product`,`product_version`,`product_region`),
+	UNIQUE KEY `uk_id` (`product_code`,`product_version`,`product_region`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
 	
 CREATE TABLE `pref_name`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`product_version_id` bigint(20) NOT NULL,
+	`pref_product_id` bigint(20) NOT NULL,
 	`name` varchar(120) NOT NULL,
 	`text_id` bigint(20) NOT NULL,
 	`category` varchar(20) NOT NULL,
@@ -243,7 +243,7 @@ CREATE TABLE `pref_name`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_pref_name` (`name`),
 	FOREIGN KEY (`text_id`) REFERENCES `texts` (`id`),
-	FOREIGN KEY (`product_version_id`) REFERENCES `pref_product` (`id`)
+	FOREIGN KEY (`pref_product_id`) REFERENCES `pref_product` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 			
 CREATE TABLE `pref_form_field_name`
@@ -918,4 +918,4 @@ INSERT INTO texts (default_text) VALUES ('Default Product Global');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default Product Global');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Producto predeterminado global');
-INSERT INTO pref_product (text_id,product,product_version,product_region) VALUES (@lastid,'GLOBAL',1,'GLOBAL');
+INSERT INTO pref_product (text_id,product_code,product_version,product_region) VALUES (@lastid,'GLOBAL',1,'GLOBAL');

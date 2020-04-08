@@ -4,7 +4,7 @@ INSERT INTO texts (default_text) VALUES ('Registration Form');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Registration Form');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de inscripción');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'REGISTRATION_PAGE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'REGISTRATION_PAGE',@lastid,'PUBLIC');
 
 -- Form Field  Registration Checkname
 INSERT INTO texts (default_text) VALUES ('User name');
@@ -193,7 +193,7 @@ INSERT INTO texts (default_text) VALUES ('Registration Service');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Registration Service');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de inscripción');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'REGISTRATION_SERVICE',@lastid,'PUBLIC');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'REGISTRATION_SERVICE',@lastid,'PUBLIC');
 
 INSERT INTO texts (default_text) VALUES ('Match Password Failure');
 SET @lastid = LAST_INSERT_ID();

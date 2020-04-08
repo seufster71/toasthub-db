@@ -3,7 +3,7 @@ INSERT INTO texts (default_text) VALUES ('Admin Category Page');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Category Page');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Página de categoría de administración');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'ADMIN_CATEGORY_PAGE',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'ADMIN_CATEGORY_PAGE',@lastid,'ADMIN');
 
 INSERT INTO texts (default_text) VALUES ('Name');
 SET @lastid = LAST_INSERT_ID();

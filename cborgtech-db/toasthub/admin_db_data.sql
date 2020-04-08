@@ -5,7 +5,7 @@ INSERT INTO texts (default_text) VALUES ('Admin Users');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Users');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Los usuarios admin');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'ADMIN_USERS',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'ADMIN_USERS',@lastid,'ADMIN');
 
 -- Paging
 INSERT INTO texts (default_text) VALUES ('Paging Limit');
@@ -22,7 +22,7 @@ INSERT INTO texts (default_text) VALUES ('Admin Roles');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Roles');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Los usuarios admin');
-INSERT INTO pref_name (product_version_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product = 'GLOBAL'),'ADMIN_ROLES',@lastid,'ADMIN');
+INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'ADMIN_ROLES',@lastid,'ADMIN');
 
 -- Paging
 INSERT INTO texts (default_text) VALUES ('Paging Limit');

@@ -9,25 +9,9 @@ INSERT INTO texts (default_text) VALUES ('Name');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Name');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_CATEGORY_PAGE'),'ADMIN_CATEGORY_FORM_TITLE',@lastid,'GRP','text',0,0,null,'FORM1','MTITLE','{"clazz":"org.toasthub.core.general.model.Category","field":"title","type":"Object"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE'),'','Name:','en',true,true,0,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE'),'','Nombre:','es',true,true,0,'');
-
-INSERT INTO texts (default_text) VALUES ('Default Text Name');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Default Text Name');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Título de texto predeterminado');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_CATEGORY_PAGE'),'ADMIN_CATEGORY_FORM_TITLE_DEFAULT',@lastid,'TXT','text',0,0,null,'FORM1','MTITLE','{"clazz":"org.toasthub.core.general.model.Category","field":{"title":{"clazz":"org.toasthub.core.system.model.Text","field":"defaultText","type":"String"}},"method":"setTitleDefaultText","type":"Object"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE_DEFAULT'),'','Default Text:','en',true,true,0,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE_DEFAULT'),'','Texto predeterminado:','es',true,true,0,'');
-
-INSERT INTO texts (default_text) VALUES ('Name Text');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Name Text');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Texto del título');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_CATEGORY_PAGE'),'ADMIN_CATEGORY_FORM_TITLE_TEXT',@lastid,'LTXT','text',0,0,null,'FORM1','MTITLE','{"clazz":"org.toasthub.core.general.model.Category","field":{"title":{"clazz":"org.toasthub.core.system.model.Text","field":{"langTexts":{"clazz":"org.toasthub.core.system.model.LangText","type":"Set","fields":[{"field":"text","type":"String"},{"field":"lang","type":"String"}]}}}},"method":"setTitleMtext","type":"Object"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE_TEXT'),'','Text:','en',true,true,1,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE_TEXT'),'','Título:','es',true,true,1,'');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_CATEGORY_PAGE'),'ADMIN_CATEGORY_FORM_TITLE',@lastid,'MTXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.core.general.model.Category","field":"title","type":"Object","defaultClazz":{"clazz":"org.toasthub.security.model.Text","field":"defaultText","type":"String","method":"setTitleDefaultText"},"textClazz":{"clazz":"org.toasthub.security.model.LangText","type":"Set","fields":[{"field":"text","type":"String"},{"field":"lang","type":"String"}],"method":"setTitleMtext"}}');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE'),'','{"label":"Name:","defaultLabel":"Default Text:","textLabel":"Text:"}','en',true,true,0,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_TITLE'),'','{"label":"Nombre:","defaultLabel":"Texto predeterminado:","textLabel":"Título:"}','es',true,true,0,'');
 
 INSERT INTO texts (default_text) VALUES ('Code');
 SET @lastid = LAST_INSERT_ID();
@@ -36,7 +20,6 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Código');
 INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_CATEGORY_PAGE'),'ADMIN_CATEGORY_FORM_CODE',@lastid,'TXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.core.general.model.Category","field":"code","type":"String"}','');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_CODE'),'','Code:','en',true,true,1,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_CATEGORY_FORM_CODE'),'','Código:','es',true,true,1,'');
-
 
 INSERT INTO texts (default_text) VALUES ('Status');
 SET @lastid = LAST_INSERT_ID();

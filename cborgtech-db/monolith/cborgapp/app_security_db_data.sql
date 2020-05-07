@@ -66,11 +66,25 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Dashboard');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tablero de administración');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
 INSERT INTO texts (default_text) VALUES ('Admin Bugs');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bugs');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Errores de administración');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AB',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('Admin Bugs Lanes');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bugs Lanes');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Admin Bugs Lanes');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ABLA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('Admin Bugs List');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bug List');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Lista de errores del administrador');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ABLI',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
 INSERT INTO texts (default_text) VALUES ('Admin Change Requests');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Change Request');
@@ -211,6 +225,8 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AB' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ABLA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ABLI' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ACR' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'D' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AUM' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AU' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
@@ -292,16 +308,31 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Dashboard');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Tablero de administración');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+
 INSERT INTO texts (default_text) VALUES ('Admin Bugs');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bugs');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Errores de administración');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AB',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+
+INSERT INTO texts (default_text) VALUES ('Admin Bugs Lanes');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bugs Lanes');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Admin Bugs Lanes');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ABLA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+
+INSERT INTO texts (default_text) VALUES ('Admin Bugs List');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Bug List');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Lista de errores del administrador');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ABLI',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+
 INSERT INTO texts (default_text) VALUES ('Admin Change Requests');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Change Request');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Solicitud de cambio de administrador');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ACR',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_BUGDOG'));
+
 INSERT INTO texts (default_text) VALUES ('Admin User Management');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin User Management');
@@ -437,6 +468,8 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AB' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ABLA' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ABLI' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ACR' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'D' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AUM' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AU' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_BUGDOG');

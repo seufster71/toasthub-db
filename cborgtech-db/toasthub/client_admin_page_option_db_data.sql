@@ -76,7 +76,7 @@ INSERT INTO texts (default_text) VALUES ('Value');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Value');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Valor');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_VALUE',@lastid,'TXT','text',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionName","field":"value","type":"String"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_VALUE',@lastid,'TXT','text',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionValue","field":"value","type":"String"}');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_VALUE'),'','Value:','en',true,false,0,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_VALUE'),'','Valor:','es',true,false,0,'');
 
@@ -84,7 +84,7 @@ INSERT INTO texts (default_text) VALUES ('Validation');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Validation');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Etiqueta');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_VALIDATION',@lastid,'TXT','text',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionName","field":"validation","type":"String"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_VALIDATION',@lastid,'TXT','text',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionValue","field":"validation","type":"String"}');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_VALIDATION'),'','Validation:','en',true,false,1,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_VALIDATION'),'','Validación:','es',true,false,1,'');
 
@@ -92,7 +92,7 @@ INSERT INTO texts (default_text) VALUES ('Rendered');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Rendered');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Rendido');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_RENDERED',@lastid,'BLN','radioH',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionName","field":"rendered","type":"Boolean"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_OPTION_PAGE'),'ADMIN_OPTION_VALUE_RENDERED',@lastid,'BLN','radioH',0,0,null,'FORM-NAME','MULTI-VALUES','{"clazz":"org.toasthub.core.preference.model.PrefOptionValue","field":"rendered","type":"Boolean"}');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_RENDERED'),'{"options":[{"value":true,"label":"True","defaultInd":true},{"value":false,"label":"False"}]}','Rendered:','en',true,true,2,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_OPTION_VALUE_RENDERED'),'{"options":[{"value":true,"label":"Cierto","defaultInd":true},{"value":false,"label":"Falso"}]}','Rendido:','es',true,true,2,'');
 

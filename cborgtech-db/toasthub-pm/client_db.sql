@@ -12,7 +12,7 @@ CREATE TABLE `pm_product`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_name_app` (`name`),
+	UNIQUE KEY `uk_name_app` (`name`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_project`
@@ -33,32 +33,6 @@ CREATE TABLE `pm_project`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-	
-CREATE TABLE `pm_sprint`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`name` varchar(200) NOT NULL,
-	`description` text,
-	`start_date` datetime NOT NULL,
-	`end_date` datetime NOT NULL,
-	`product_id` bigint(20),
-	`project_id` bigint(20),
-	`release_id` bigint(20),
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
-	UNIQUE KEY `uk_name_proj` (`name`,`project_id`),
-	UNIQUE KEY `uk_name_rel` (`name`,`release_id`),
-	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
-	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
-	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_backlog`
@@ -105,6 +79,32 @@ CREATE TABLE `pm_release`
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `pm_sprint`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`name` varchar(200) NOT NULL,
+	`description` text,
+	`start_date` datetime NOT NULL,
+	`end_date` datetime NOT NULL,
+	`product_id` bigint(20),
+	`project_id` bigint(20),
+	`release_id` bigint(20),
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
+	UNIQUE KEY `uk_name_proj` (`name`,`project_id`),
+	UNIQUE KEY `uk_name_rel` (`name`,`release_id`),
+	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
+	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
+	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
 CREATE TABLE `pm_defect`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`summary` varchar(200) NOT NULL,
@@ -139,8 +139,8 @@ CREATE TABLE `pm_defect`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`reported_by_id`) REFERENCES `users` (`id`),
-	FOREIGN KEY (`assignee_id`) REFERENCES `users` (`id`),
+	FOREIGN KEY (`reported_by_id`) REFERENCES `user_ref` (`id`),
+	FOREIGN KEY (`assignee_id`) REFERENCES `user_ref` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
@@ -178,13 +178,13 @@ CREATE TABLE `pm_enhancement`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`reported_by_id`) REFERENCES `users` (`id`),
-	FOREIGN KEY (`assignee_id`) REFERENCES `users` (`id`),
+	FOREIGN KEY (`reported_by_id`) REFERENCES `user_ref` (`id`),
+	FOREIGN KEY (`assignee_id`) REFERENCES `user_ref` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
 	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
-	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`),
+	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_comment`
@@ -204,7 +204,7 @@ CREATE TABLE `pm_comment`
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`parent_id`) REFERENCES `pm_comment` (`id`),
 	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`),
-	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`),
+	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_scrum`
@@ -341,8 +341,8 @@ CREATE TABLE `pm_watcher`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`)
+	FOREIGN KEY (`user_id`) REFERENCES `user_ref` (`id`),
+	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`),
 	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 

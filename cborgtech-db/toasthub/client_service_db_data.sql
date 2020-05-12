@@ -11,14 +11,20 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('LOGOUT_SVC','1.0','1.0','LogOutSvc','ADMIN','LOCAL','ALO','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('CATEGORY_SVC','1.0','1.0','CategoryAdminSvc','ADMIN','LOCAL','AC','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('STATUS_SVC','1.0','1.0','StatusAdminSvc','ADMIN','LOCAL','AS','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('WORKFLOW_SVC','1.0','1.0','WorkFlowSvc','ADMIN','LOCAL','AW','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('WORKFLOW_SVC','1.0','1.0','WorkFlowAdminSvc','ADMIN','LOCAL','AW','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('ROLES_SVC','1.0','1.0','RoleAdminSvc','ADMIN','LOCAL','AR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PERMISSIONS_SVC','1.0','1.0','PermissionAdminSvc','ADMIN','LOCAL','AP','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_FORMFIELD_SVC','1.0','1.0','PrefFormFieldAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_LABEL_SVC','1.0','1.0','PrefLabelAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_OPTION_SVC','1.0','1.0','PrefOptionAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_TEXT_SVC','1.0','1.0','PrefTextAdminSvc','ADMIN','LOCAL','APR','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('BUG_SVC','1.0','1.0','BugAdminSvc','ADMIN','LOCAL','AB','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('DEFECT_SVC','1.0','1.0','DefectAdminSvc','ADMIN','LOCAL','APMDEF','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('ENHANCEMENT_SVC','1.0','1.0','EnhancementAdminSvc','ADMIN','LOCAL','APMENH','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PRODUCT_SVC','1.0','1.0','ProductAdminSvc','ADMIN','LOCAL','APMPD','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PROJECT_SVC','1.0','1.0','ProjectAdminSvc','ADMIN','LOCAL','APMPJ','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('RELEASE_SVC','1.0','1.0','ReleaseAdminSvc','ADMIN','LOCAL','APMREL','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('BACKLOG_SVC','1.0','1.0','BacklogAdminSvc','ADMIN','LOCAL','APMBL','R');
+
 
 -- public
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PUBLIC_SVC','1.0','1.0','PublicSvc','PUBLIC','LOCAL','APR','R');
@@ -42,7 +48,8 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('STATUS_SVC','1.0','1.0','StatusSvc','MEMBER','LOCAL','MS','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('WORKFLOW_SVC','1.0','1.0','WorkFlowSvc','MEMBER','LOCAL','MWF','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PROFILE_SVC','1.0','1.0','ProfileSvc','MEMBER','LOCAL','MP','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('BUG_SVC','1.0','1.0','BugSvc','MEMBER','LOCAL','MB','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('DEFECT_SVC','1.0','1.0','DefectSvc','MEMBER','LOCAL','MPMDEF','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('ENHANCEMENT_SVC','1.0','1.0','EnhancementSvc','MEMBER','LOCAL','MPMENH','R');
 
 -- system
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SYSTEM_SVC','1.0','1.0','SystemSvc','SYSTEM','LOCAL','SYSAREA','R');

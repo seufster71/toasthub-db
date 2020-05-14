@@ -95,10 +95,14 @@ INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES 
 INSERT INTO texts (default_text) VALUES ('Empty List');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Empty List');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','El Empty List');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','
+Lista vacía');
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_LIST_EMPTY',@lastid);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_LIST_EMPTY'),'No items available','en',true);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_LIST_EMPTY'),'el No items available','es',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_LIST_EMPTY'),'No hay artículos disponibles','es',true);
+
+
+
 
 -- Menu texts
 INSERT INTO texts (default_text) VALUES ('Menu Option Add');
@@ -204,4 +208,84 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceso denegado'
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_ACCESS_DENIED',@lastid);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_ACCESS_DENIED'),'Access Denied.','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_ACCESS_DENIED'),'Acceso denegado','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Save Successful');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Save Successful');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Guardar exitosa');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_SAVE_SUCCESS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_SAVE_SUCCESS'),'Save Successful','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_SAVE_SUCCESS'),'Guardar exitosa','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Save Failed');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Save Failed');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Guardar fallida');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_SAVE_FAIL',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_SAVE_FAIL'),'Save Failed','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_SAVE_FAIL'),'Guardar fallida','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Delete Successful');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Delete Successful');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Eliminar exitosa');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_DELETE_SUCCESS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_DELETE_SUCCESS'),'Delete Successful','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_DELETE_SUCCESS'),'Eliminar exitosa','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Delete Failed');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Delete Failed');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Eliminar fallida');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_DELETE_FAIL',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_DELETE_FAIL'),'Delete Failed','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_DELETE_FAIL'),'Eliminar fallida','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Action not available');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Action not available');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acción no disponible');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_ACTION_NOT_AVAIL',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_ACTION_NOT_AVAIL'),'Action not available','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_ACTION_NOT_AVAIL'),'Acción no disponible','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Validation Error');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Validation Error');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Error de validacion');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_VALIDATION_ERR',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_VALIDATION_ERR'),'Validation Error','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_VALIDATION_ERR'),'Error de validacion','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Unable to complete request');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Unable to complete request');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','No se puede completar la solicitud');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_UNABLE_COMPLETE',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_UNABLE_COMPLETE'),'Unable to complete request','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_UNABLE_COMPLETE'),'No se puede completar la solicitud','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Execution Failed');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Execution Failed');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Ejecución fallida');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_EXECUTION_FAIL',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_EXECUTION_FAIL'),'Execution Failed','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_EXECUTION_FAIL'),'Ejecución fallida','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Missing ID');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Missing ID');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','ID faltante');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_MISSING_ID',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_MISSING_ID'),'Missing ID','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_MISSING_ID'),'ID faltante','es',true);
+
+INSERT INTO texts (default_text) VALUES ('No Items');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','No Items');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','No hay artículos');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_SERVICE'),'GLOBAL_SERVICE_NO_ITEMS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_NO_ITEMS'),'No Items','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_SERVICE_NO_ITEMS'),'No hay artículos','es',true);
 

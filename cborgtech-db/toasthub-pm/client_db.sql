@@ -368,8 +368,8 @@ CREATE TABLE `pm_workflow`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_title_prod` (`title`,`product_id`),
-	UNIQUE KEY `uk_title_proj` (`title`,`project_id`),
+	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
+	UNIQUE KEY `uk_name_proj` (`name`,`project_id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

@@ -293,6 +293,9 @@ CREATE TABLE `pm_test_scenario`
 	`summary` varchar(200) NOT NULL,
 	`description` text,
 	`type` varchar(100) NOT NULL,
+	`environment` text,
+	`user_info` varchar(2000),
+	`setup_info` text,
 	`defect_id` bigint(20),
 	`enhancement_id` bigint(20),
 	`is_active` bit(1) DEFAULT 1,
@@ -314,6 +317,9 @@ CREATE TABLE `pm_test_case`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`summary` varchar(200) NOT NULL,
 	`description` text,
+	`environment` text,
+	`user_info` varchar(2000),
+	`setup_info` text,
 	`test_scenario_id` bigint(20) NOT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
@@ -349,7 +355,7 @@ CREATE TABLE `pm_watcher`
 
 CREATE TABLE `pm_workflow`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`title` varchar(200) NOT NULL,
+	`name` varchar(200) NOT NULL,
 	`description` text,
 	`product_id` bigint(20),
 	`project_id` bigint(20),
@@ -370,7 +376,7 @@ CREATE TABLE `pm_workflow`
 	
 CREATE TABLE `pm_workflow_step`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`name` varchar(100) NOT NULL,
+	`name` varchar(200) NOT NULL,
 	`workflow_id` bigint(20),
 	`workflow_step_id` bigint(20),
 	`is_active` bit(1) DEFAULT 1,

@@ -139,8 +139,6 @@ CREATE TABLE `pm_defect`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`reported_by_id`) REFERENCES `user_ref` (`id`),
-	FOREIGN KEY (`assignee_id`) REFERENCES `user_ref` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
@@ -178,8 +176,6 @@ CREATE TABLE `pm_enhancement`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`reported_by_id`) REFERENCES `user_ref` (`id`),
-	FOREIGN KEY (`assignee_id`) REFERENCES `user_ref` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
@@ -190,6 +186,7 @@ CREATE TABLE `pm_enhancement`
 CREATE TABLE `pm_comment`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`description` text NOT NULL,
+	`owner_id` bigint(20),
 	`parent_id` bigint(20),
 	`defect_id` bigint(20),
 	`enhancement_id` bigint(20),
@@ -347,7 +344,6 @@ CREATE TABLE `pm_watcher`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`user_id`) REFERENCES `user_ref` (`id`),
 	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`),
 	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

@@ -95,13 +95,43 @@ INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES 
 INSERT INTO texts (default_text) VALUES ('Empty List');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Empty List');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','
-Lista vacía');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Lista vacía');
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_LIST_EMPTY',@lastid);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_LIST_EMPTY'),'No items available','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_LIST_EMPTY'),'No hay artículos disponibles','es',true);
 
 
+INSERT INTO texts (default_text) VALUES ('True False Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','True False Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Verdadero Falso Opciones');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_TRUE_FALSE_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"True","value":"true","defaultInd":true},{"label":"False","value":"false"}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"Cierto","value":"true","defaultInd":true},{"label":"Falso","value":"false"}]}','es',true);
+
+INSERT INTO texts (default_text) VALUES ('False True Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','False True Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opciones verdaderas falsas');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_FALSE_TRUE_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"False","value":"false","defaultInd":true},{"label":"True","value":"true"}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"Falso","value":"false","defaultInd":true},{"label":"Cierto","value":"true"}]}','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Severity Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Severity Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opciones de gravedad');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_SEVERITY_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_SEVERITY_OPTIONS'),'{"options":[{"label":"Critical","value":"CRITICAL"},{"label":"Major","value":"MAJOR"},{"label":"Minor","value":"MINOR"},{"label":"Info","value":"INFO","defaultInd":true}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_SEVERITY_OPTIONS'),'{"options":[{"label":"Crítico","value":"CRITICAL"},{"label":"Mayor","value":"MAJOR"},{"label":"Menor","value":"MINOR"},{"label":"Informacion","value":"INFO","defaultInd":true}]}','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Active Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Active Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opciones activas');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_ACTIVE_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_ACTIVE_OPTIONS'),'{"options":[{"label":"Active","value":true,"defaultInd":true},{"label":"Disable","value":false}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_ACTIVE_OPTIONS'),'{"options":[{"label":"Activo","value":true,"defaultInd":true},{"label":"Inhabilitar","value":false}]}','es',true);
 
 
 -- Menu texts
@@ -177,6 +207,7 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','SMTP Gateway Pas
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_OPTIONS'),'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD',@lastid);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'toasthub#1','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_OPTIONS_SMTP_GATEWAY_PASSWORD'),'toasthub#1','es',true);
+
 
 -- Global Service
 INSERT INTO texts (default_text) VALUES ('Global Service');

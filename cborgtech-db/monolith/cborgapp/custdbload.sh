@@ -114,9 +114,18 @@ load_base(){
    	
    	echo "Loading client_project_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_project_db_data.sql
+   	
+   	echo "Loading client_release_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_release_db_data.sql
+   	
+   	echo "Loading client_backlog_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_backlog_db_data.sql
 	
 	echo "Loading client_defect_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_defect_db_data.sql
+   	
+   	echo "Loading client_enhancement_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_enhancement_db_data.sql
    	
 	echo "Done Loading db ${1}"
 	}

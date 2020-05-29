@@ -161,21 +161,22 @@ INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES 
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_ENHANCEMENT_PAGE_HEADER'),'Mejoras','es',true);
 
 -- TABLE
+INSERT INTO texts (default_text) VALUES ('Column ID');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column ID');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','ID de columna');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_ID',@lastid,'TABLE1','{"field":"id","prefix":"EH-"}');
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_ID'),'ID','en',true,0);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_ID'),'ID','es',true,0);
+
+
 INSERT INTO texts (default_text) VALUES ('Column Summary');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Summary');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Resumen de columna');
 INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_SUMMARY',@lastid,'TABLE1','{"field":"summary"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SUMMARY'),'Summary','en',true,0);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SUMMARY'),'Resumen','es',true,0);
-
-INSERT INTO texts (default_text) VALUES ('Column Priority');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Priority');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Prioridad de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_PRIORITY',@lastid,'TABLE1','{"field":"priority"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Priority','en',true,1);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Prioridad','es',true,1);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SUMMARY'),'Summary','en',true,1);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SUMMARY'),'Resumen','es',true,1);
 
 INSERT INTO texts (default_text) VALUES ('Column Severity');
 SET @lastid = LAST_INSERT_ID();
@@ -185,34 +186,43 @@ INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_param
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SEVERITY'),'Severity','en',true,2);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_SEVERITY'),'Gravedad','es',true,2);
 
+INSERT INTO texts (default_text) VALUES ('Column Priority');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Priority');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Prioridad de columna');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_PRIORITY',@lastid,'TABLE1','{"field":"priority"}');
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Priority','en',true,3);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Prioridad','es',true,3);
+
+
 INSERT INTO texts (default_text) VALUES ('Column Internal Reference');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Internal Reference');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Referencia interna de columna');
 INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_INTERNALREF',@lastid,'TABLE1','{"field":"internalRef"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_INTERNALREF'),'Internal Reference','en',true,3);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_INTERNALREF'),'Referencia interna','es',true,3);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_INTERNALREF'),'Internal Reference','en',true,4);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_INTERNALREF'),'Referencia interna','es',true,4);
 
 INSERT INTO texts (default_text) VALUES ('Column External Reference');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column External Reference');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Referencia externa de columna');
 INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_EXTERNALREF',@lastid,'TABLE1','{"field":"externalRef"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'External Reference','en',true,4);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'Referencia externa','es',true,4);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'External Reference','en',true,5);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'Referencia externa','es',true,5);
 
 INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Column Status');
 INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_STATUS'),'Status','en',true,5);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_STATUS'),'Estado','es',true,5);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_STATUS'),'Status','en',true,6);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_STATUS'),'Estado','es',true,6);
 
 INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
 INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','en',true,6);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','es',true,6);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','en',true,7);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','es',true,7);

@@ -63,6 +63,22 @@ INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pr
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER'),'Releases','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER'),'Lanzamientos','es',true);
 
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent Product');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent Product');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con producto principal');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_RELEASE_PAGE'),'PM_RELEASE_PAGE_HEADER_PARENT_PRODUCT',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER_PARENT_PRODUCT'),'Release for Product: ','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER_PARENT_PRODUCT'),'Lanzamiento para producto:','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent Project');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent Project');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con proyecto principal');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_RELEASE_PAGE'),'PM_RELEASE_PAGE_HEADER_PARENT_PROJECT',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER_PARENT_PROJECT'),'Release for Project: ','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_RELEASE_PAGE_HEADER_PARENT_PROJECT'),'Lanzamiento para proyecto:','es',true);
+
 -- TABLE
 INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();

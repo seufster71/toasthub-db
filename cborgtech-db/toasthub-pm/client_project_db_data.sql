@@ -63,6 +63,14 @@ INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pr
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_PROJECT_PAGE_HEADER'),'Projects','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_PROJECT_PAGE_HEADER'),'Proyectos','es',true);
 
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con padre');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_PROJECT_PAGE'),'PM_PROJECT_PAGE_HEADER_PARENT',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_PROJECT_PAGE_HEADER_PARENT'),'Projects for Product: ','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_PROJECT_PAGE_HEADER_PARENT'),'Proyectos para producto:','es',true);
+
 -- TABLE
 INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();

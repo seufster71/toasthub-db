@@ -194,7 +194,6 @@ INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_param
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Priority','en',true,3);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_PRIORITY'),'Prioridad','es',true,3);
 
-
 INSERT INTO texts (default_text) VALUES ('Column Internal Reference');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Internal Reference');
@@ -211,6 +210,14 @@ INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_param
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'External Reference','en',true,5);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_EXTERNALREF'),'Referencia externa','es',true,5);
 
+INSERT INTO texts (default_text) VALUES ('Column Workflow');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Workflow');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Column Workflow');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_WORKFLOW',@lastid,'TABLE1','{"fieldObject":"workflowStep","field":"name"}');
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_WORKFLOW'),'Workflow','en',true,6);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_WORKFLOW'),'Flujo de trabajo','es',true,6);
+
 INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
@@ -223,6 +230,6 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_ENHANCEMENT_PAGE'),'PM_ENHANCEMENT_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}');
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','en',true,7);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_ENHANCEMENT_TABLE_OPTIONS'),'Options','es',true,7);

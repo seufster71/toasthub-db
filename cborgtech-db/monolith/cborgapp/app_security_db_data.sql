@@ -68,6 +68,18 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','PM Enhancement')
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','PM Mejora');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MPMENH',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
+INSERT INTO texts (default_text) VALUES ('PM Task');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','PM Task');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','PM Tarea');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MPMTASK',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('PM Workflow');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','PM Workflow');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','PM Flujo de trabajo');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MPMWF',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
 INSERT INTO texts (default_text) VALUES ('Member Groups');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Member Groups');
@@ -255,6 +267,8 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMBAK' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMDEF' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMENH' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMTASK' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMWF' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');

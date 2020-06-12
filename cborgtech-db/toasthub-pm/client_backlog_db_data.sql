@@ -47,6 +47,22 @@ INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pr
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER'),'Backlogs','en',true);
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER'),'Atrasos','es',true);
 
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent Product');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent Product');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con producto principal');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_BACKLOG_PAGE'),'PM_BACKLOG_PAGE_HEADER_PARENT_PRODUCT',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER_PARENT_PRODUCT'),'Backlog for Product: ','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER_PARENT_PRODUCT'),'Backlog para producto:','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Page Header with Parent Project');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header with Parent Project');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página con proyecto principal');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_BACKLOG_PAGE'),'PM_BACKLOG_PAGE_HEADER_PARENT_PROJECT',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER_PARENT_PROJECT'),'Backlog for Project: ','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_BACKLOG_PAGE_HEADER_PARENT_PROJECT'),'Backlog para Proyecto:','es',true);
+
 -- TABLE
 INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();
@@ -68,6 +84,6 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_BACKLOG_PAGE'),'PM_BACKLOG_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"icon":"option1","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"icon":"option2","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_BACKLOG_PAGE'),'PM_BACKLOG_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"SCRUM","classField":"fa fa-snowflake-o fa-1","permission":{"ARDR":"W"},"label":{"en":"Scrum"}},{"code":"DEFECT","classField":"fa fa-bug fa-1","permission":{"ARDR":"W"},"label":{"en":"Defect"}},{"code":"ENHANCEMENT","classField":"fa fa-fighter-jet fa-1","permission":{"ARDR":"W"},"label":{"en":"Enhancement"}}]}');
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_BACKLOG_TABLE_OPTIONS'),'Options','en',true,4);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_BACKLOG_TABLE_OPTIONS'),'Options','es',true,4);

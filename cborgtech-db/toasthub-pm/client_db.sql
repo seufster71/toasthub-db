@@ -18,7 +18,8 @@ CREATE TABLE `pm_workflow_step`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`workflow_id` bigint(20) DEFAULT NULL,
-	`workflow_step_id` bigint(20) DEFAULT NULL,
+	`next_step` varchar(5000),
+	`sort_order` INT NOT NULL DEFAULT 1,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -29,8 +30,7 @@ CREATE TABLE `pm_workflow_step`
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_name_wf` (`name`,`workflow_id`),
-	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
-	FOREIGN KEY (`workflow_step_id`) REFERENCES `pm_workflow_step` (`id`)
+	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_product`

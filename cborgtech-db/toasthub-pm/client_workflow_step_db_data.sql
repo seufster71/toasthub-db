@@ -19,7 +19,7 @@ INSERT INTO texts (default_text) VALUES ('Next');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Next');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Próximo');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NEXT',@lastid,'SLTMULTI','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"nextStep","type":"Array"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NEXT',@lastid,'SLTMULTI','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"nextStep","type":"JSONArray"}');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Next:','en',true,true,1,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Próximo:','es',true,true,1,'');
 

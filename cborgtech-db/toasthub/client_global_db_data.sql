@@ -106,16 +106,33 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','True False Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Verdadero Falso Opciones');
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_TRUE_FALSE_OPTIONS',@lastid);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"True","value":"true","defaultInd":true},{"label":"False","value":"false"}]}','en',true);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"Cierto","value":"true","defaultInd":true},{"label":"Falso","value":"false"}]}','es',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"True","value":true,"defaultInd":true},{"label":"False","value":false}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_TRUE_FALSE_OPTIONS'),'{"options":[{"label":"Cierto","value":true,"defaultInd":true},{"label":"Falso","value":false}]}','es',true);
 
 INSERT INTO texts (default_text) VALUES ('False True Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','False True Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opciones verdaderas falsas');
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_FALSE_TRUE_OPTIONS',@lastid);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"False","value":"false","defaultInd":true},{"label":"True","value":"true"}]}','en',true);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"Falso","value":"false","defaultInd":true},{"label":"Cierto","value":"true"}]}','es',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"False","value":false,"defaultInd":true},{"label":"True","value":true}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_FALSE_TRUE_OPTIONS'),'{"options":[{"label":"Falso","value":false,"defaultInd":true},{"label":"Cierto","value":true}]}','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Yes No Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Yes No Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Si No Opciones');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_YES_NO_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_YES_NO_OPTIONS'),'{"options":[{"label":"Yes","value":true,"defaultInd":true},{"label":"No","value":false}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_YES_NO_OPTIONS'),'{"options":[{"label":"Si","value":true,"defaultInd":true},{"label":"No","value":false}]}','es',true);
+
+INSERT INTO texts (default_text) VALUES ('No Yes Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','No Yes Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','No Si Opciones');
+INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'GLOBAL_PAGE'),'GLOBAL_PAGE_NO_YES_OPTIONS',@lastid);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_NO_YES_OPTIONS'),'{"options":[{"label":"No","value":false,"defaultInd":true},{"label":"Yes","value":true}]}','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'GLOBAL_PAGE_NO_YES_OPTIONS'),'{"options":[{"label":"No","value":false,"defaultInd":true},{"label":"Si","value":true}]}','es',true);
+
 
 INSERT INTO texts (default_text) VALUES ('Severity Options');
 SET @lastid = LAST_INSERT_ID();

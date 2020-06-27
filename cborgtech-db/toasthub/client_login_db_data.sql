@@ -11,26 +11,26 @@ INSERT INTO texts (default_text) VALUES ('User name');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','User name');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de usuario');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,tab_index,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_USERNAME',@lastid,'TXT',1,'text',2,25,null,'FORM1',null,'{"clazz":"org.toasthub.security.model.User","field":"username","type":"String"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_USERNAME'),'','User name:','en',true,true,0,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Validation Error"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_USERNAME'),'','Nombre de usuario:','es',true,true,0,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Error de validacion"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,tab_index,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_USERNAME',@lastid,'TXT',1,'text',2,25,null,'FORM1',null,'{"clazz":"org.toasthub.security.model.User","field":"username","type":"String"}',0);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_USERNAME'),'','User name:','en',true,true,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Validation Error"}');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_USERNAME'),'','Nombre de usuario:','es',true,true,'{"regex":"^[a-zA-Z0-9_#!@.]*$","errorMsg":"Error de validacion"}');
 
 INSERT INTO texts (default_text) VALUES ('Password');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Password');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Contraseña');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,tab_index,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_PASSWORD',@lastid,'TXT',2,'password',2,25,null,'FORM1',null,'{"clazz":"org.toasthub.security.model.User","field":"password","type":"String"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_PASSWORD'),'','Password:','en',true,true,1,'{"regex":"^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[\\\\d]){1,})(?=(.*[^a-zA-Z0-9]){1,}).{7,30}$","validationString":"1 Lower 1 Upper 1 Number 1 Special Min 7 Max 30","errorMsg":"Validation Error"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_PASSWORD'),'','Contraseña:','es',true,true,1,'{"regex":"^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[\\\\d]){1,})(?=(.*[^a-zA-Z0-9]){1,}).{7,30}$","validationString":"1 Lower 1 Upper 1 Number 1 Special Min 7 Max 30","errorMsg":"Error de validacion"}');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,tab_index,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_PASSWORD',@lastid,'TXT',2,'password',2,25,null,'FORM1',null,'{"clazz":"org.toasthub.security.model.User","field":"password","type":"String"}',1);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_PASSWORD'),'','Password:','en',true,true,'{"regex":"^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[\\\\d]){1,})(?=(.*[^a-zA-Z0-9]){1,}).{7,30}$","validationString":"1 Lower 1 Upper 1 Number 1 Special Min 7 Max 30","errorMsg":"Validation Error"}');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'LOGIN_FORM_PASSWORD'),'','Contraseña:','es',true,true,'{"regex":"^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[\\\\d]){1,})(?=(.*[^a-zA-Z0-9]){1,}).{7,30}$","validationString":"1 Lower 1 Upper 1 Number 1 Special Min 7 Max 30","errorMsg":"Error de validacion"}');
 
 -- Labels Login
 INSERT INTO texts (default_text) VALUES ('Log in - Button');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Log in - Button');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Iniciar sesión - Botón');
-INSERT INTO pref_label_name (pref_name_id,name,class_name,tab_index,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_SUBMIT_BUTTON','form-control btn btn-login',4,@lastid);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'LOGIN_FORM_SUBMIT_BUTTON'),'Log in','en',true,0);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'LOGIN_FORM_SUBMIT_BUTTON'),' Iniciar sesión','es',true,0);
+INSERT INTO pref_label_name (pref_name_id,name,class_name,tab_index,text_id,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'LOGIN_PAGE'),'LOGIN_FORM_SUBMIT_BUTTON','form-control btn btn-login',4,@lastid,0);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'LOGIN_FORM_SUBMIT_BUTTON'),'Log in','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'LOGIN_FORM_SUBMIT_BUTTON'),' Iniciar sesión','es',true);
 
 -- Texts Login
 INSERT INTO texts (default_text) VALUES ('Login Header label');

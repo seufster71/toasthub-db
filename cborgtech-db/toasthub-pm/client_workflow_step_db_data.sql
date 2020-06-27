@@ -11,25 +11,25 @@ INSERT INTO texts (default_text) VALUES ('Name');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Name');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NAME',@lastid,'TXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"name","type":"String"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NAME'),'','Name:','en',true,true,0,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NAME'),'','Nombre:','es',true,true,0,'');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NAME',@lastid,'TXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"name","type":"String"}',0);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NAME'),'','Name:','en',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NAME'),'','Nombre:','es',true,true,'');
 
 INSERT INTO texts (default_text) VALUES ('Next');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Next');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Próximo');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NEXT',@lastid,'SLTMULTI','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"nextStep","type":"JSONArray"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Next:','en',true,true,1,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Próximo:','es',true,true,1,'');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_NEXT',@lastid,'SLTMULTI','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.WorkflowStep","field":"nextStep","type":"JSONArray"}',1);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Next:','en',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_NEXT'),'{"optionRef":"nextOptions"}','Próximo:','es',true,true,'');
 
 INSERT INTO texts (default_text) VALUES ('Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_ACTIVE',@lastid,'BLN','radioH',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.core.general.model.WorkflowStep","field":"active","type":"Boolean"}');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_ACTIVE'),'{"referPref":{"prefName":"GLOBAL_PAGE","prefItem":"GLOBAL_PAGE_ACTIVE_OPTIONS"}}','Status:','en',true,true,4,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,sort_order,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_ACTIVE'),'{"referPref":{"prefName":"GLOBAL_PAGE","prefItem":"GLOBAL_PAGE_ACTIVE_OPTIONS"}}','Estado:','es',true,true,4,'');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_FORM'),'PM_WORKFLOW_STEP_FORM_ACTIVE',@lastid,'BLN','radioH',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.core.general.model.WorkflowStep","field":"active","type":"Boolean"}',2);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_ACTIVE'),'{"referPref":{"prefName":"GLOBAL_PAGE","prefItem":"GLOBAL_PAGE_ACTIVE_OPTIONS"}}','Status:','en',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_WORKFLOW_STEP_FORM_ACTIVE'),'{"referPref":{"prefName":"GLOBAL_PAGE","prefItem":"GLOBAL_PAGE_ACTIVE_OPTIONS"}}','Estado:','es',true,true,'');
 
 -- Page
 INSERT INTO texts (default_text) VALUES ('Workflow Step Page');
@@ -52,38 +52,38 @@ INSERT INTO texts (default_text) VALUES ('Column Move Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Move Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Opción de movimiento de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MOVEABOVE","classField":"fa fa-arrow-up fa-1","permission":{"ARER":"R"},"label":{"en":"Move Above"}},{"code":"MOVEBELOW","classField":"fa fa-arrow-down fa-1","permission":{"ARER":"R"},"label":{"en":"Move Below"}},{"code":"MOVECANCEL","classField":"fa fa-ban fa-1","permission":{"ARER":"R"},"label":{"en":"Cancel Move"}}],"conditionField":"moveSelectedItem","conditionCheck":"NotNull"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS'),'Move','en',true,0);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS'),'Moverse','es',true,0);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MOVEABOVE","classField":"fa fa-arrow-up fa-1","permission":{"ARER":"R"},"label":{"en":"Move Above"}},{"code":"MOVEBELOW","classField":"fa fa-arrow-down fa-1","permission":{"ARER":"R"},"label":{"en":"Move Below"}},{"code":"MOVECANCEL","classField":"fa fa-ban fa-1","permission":{"ARER":"R"},"label":{"en":"Cancel Move"}}],"conditionField":"moveSelectedItem","conditionCheck":"NotNull"}',0);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS'),'Move','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_MOVE_OPTIONS'),'Moverse','es',true);
 
 INSERT INTO texts (default_text) VALUES ('Column Name');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Name');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NAME',@lastid,'TABLE1','{"field":"name"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NAME'),'Name','en',true,1);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NAME'),'Nombre','es',true,1);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NAME',@lastid,'TABLE1','{"field":"name"}',1);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NAME'),'Name','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NAME'),'Nombre','es',true);
 
 INSERT INTO texts (default_text) VALUES ('Column Next');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Next');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NEXT',@lastid,'TABLE1','{"fieldJSON":"nextStep"}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Next','en',true,2);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Próximo','es',true,2);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NEXT',@lastid,'TABLE1','{"fieldJSON":"nextStep"}',2);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Next','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Próximo','es',true);
 
 INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Column Status');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_STATUS'),'Status','en',true,3);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_STATUS'),'Estado','es',true,3);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}',3);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_STATUS'),'Status','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_STATUS'),'Estado','es',true);
 
 INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"MOVESELECT","classField":"fa fa-arrows fa-1","permission":{"ARDR":"W"},"label":{"en":"Move"}}]}');
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_OPTIONS'),'Options','en',true,4);
-INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered,sort_order) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_OPTIONS'),'Options','es',true,4);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"MOVESELECT","classField":"fa fa-arrows fa-1","permission":{"ARDR":"W"},"label":{"en":"Move"}}]}',4);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_OPTIONS'),'Options','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_OPTIONS'),'Options','es',true);

@@ -1,24 +1,9 @@
-CREATE TABLE `pm_member`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`user_ref_id` bigint(20) NOT NULL,
-	`type` varchar(100) NOT NULL,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-
 CREATE TABLE `pm_role`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`code` varchar(100) NOT NULL,
-	`eff_start` datetime DEFAULT '1970-01-01 00:00:01',
-	`eff_end` datetime DEFAULT '2999-01-01 23:59:59',
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -52,8 +37,8 @@ CREATE TABLE `pm_role_permission`
 	`role_id` bigint(20) NOT NULL,
 	`permission_id` bigint(20) NOT NULL,
 	`rights` varchar(2) DEFAULT 'R',
-	`eff_start` datetime DEFAULT '1970-01-01 00:00:01',
-	`eff_end` datetime DEFAULT '2999-01-01 23:59:59',
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -83,11 +68,32 @@ CREATE TABLE `pm_team`
 	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
-CREATE TABLE `pm_team_member`
+CREATE TABLE `pm_member`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`team_id` bigint(20) NOT NULL,
-	`role_id` bigint(20) NOT NULL,
+	`user_id` bigint(20) NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`username` varchar(200) NOT NULL,
+	`type` varchar(100) NOT NULL,
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_team_member` (`team_id`,`user_id`,`type`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_member_role`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`member_id` bigint(20) NOT NULL,
+	`role_id` bigint(20) NOT NULL,
 	`sort_order` INT NOT NULL DEFAULT 1,
 	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
 	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
@@ -100,10 +106,8 @@ CREATE TABLE `pm_team_member`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_team_role_member` (`team_id`,`role_id`,`member_id`),
-	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`),
-	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`),
-	FOREIGN KEY (`member_id`) REFERENCES `pm_member` (`id`)
+	FOREIGN KEY (`member_id`) REFERENCES `pm_member` (`id`),
+	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_workflow`

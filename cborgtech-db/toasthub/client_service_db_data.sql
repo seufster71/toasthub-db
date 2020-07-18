@@ -45,6 +45,9 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_DEFECT_SVC','1.0','1.0','DefectSvc','MEMBER','LOCAL','MPMDEF','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_ENHANCEMENT_SVC','1.0','1.0','EnhancementSvc','MEMBER','LOCAL','MPMENH','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_TEAM_SVC','1.0','1.0','PMTeamSvc','MEMBER','LOCAL','MPMTEAM','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_MEMBER_SVC','1.0','1.0','PMMemberSvc','MEMBER','LOCAL','MPMTEAM','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_ROLE_SVC','1.0','1.0','PMRoleSvc','MEMBER','LOCAL','MPMTEAM','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_PERMISSION_SVC','1.0','1.0','PMPermissionSvc','MEMBER','LOCAL','MPMTEAM','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_PRODUCT_SVC','1.0','1.0','PMProductSvc','MEMBER','LOCAL','MPMPROD','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_PROJECT_SVC','1.0','1.0','PMProjectSvc','MEMBER','LOCAL','MPMPROJ','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_RELEASE_SVC','1.0','1.0','PMReleaseSvc','MEMBER','LOCAL','MPMREL','R');

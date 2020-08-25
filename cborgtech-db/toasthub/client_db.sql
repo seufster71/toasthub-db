@@ -557,6 +557,7 @@ CREATE TABLE `menu_items`
 	`menu_id` bigint(20) NOT NULL,
 	`parent_id` bigint(20),
 	`permission_code` varchar(255),
+	`optional_params` text DEFAULT NULL,
 	`sort_order` INT NOT NULL DEFAULT 0,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,

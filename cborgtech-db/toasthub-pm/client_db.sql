@@ -206,6 +206,24 @@ CREATE TABLE `pm_project`
 	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_project_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`project_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
 
 CREATE TABLE `pm_backlog`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -228,6 +246,23 @@ CREATE TABLE `pm_backlog`
 	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_backlog_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`backlog_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_release`
@@ -253,6 +288,23 @@ CREATE TABLE `pm_release`
 	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_release_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`release_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_sprint`
@@ -290,7 +342,7 @@ CREATE TABLE `pm_defect`
 	`work_around` text,
 	`env_users` varchar(200),
 	`reported_by_id` bigint(20),
-	`assignee_ids` varchar(500),
+	`assignee_id` bigint(20),
 	`severity` varchar(100),
 	`priority` int DEFAULT 0,
 	`item_version` varchar(100),
@@ -328,7 +380,7 @@ CREATE TABLE `pm_enhancement`
 	`summary` varchar(200) NOT NULL,
 	`description` text,
 	`reported_by_id` bigint(20),
-	`assignee_ids` varchar(500),
+	`assignee_id` bigint(20),
 	`severity` varchar(100),
 	`priority` int DEFAULT 0,
 	`item_version` varchar(100),
@@ -444,7 +496,7 @@ CREATE TABLE `pm_task`
 	`summary` varchar(200) NOT NULL,
 	`description` text,
 	`reported_by_id` bigint(20),
-	`assignee_ids` varchar(500),
+	`assignee_id` bigint(20),
 	`severity` varchar(100),
 	`priority` int DEFAULT 0,
 	`item_version` varchar(100),

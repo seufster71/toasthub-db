@@ -440,6 +440,8 @@ CREATE TABLE `pm_scrum`
 	`description` text,
 	`product_id` bigint(20) DEFAULT NULL,
 	`project_id` bigint(20) DEFAULT NULL,
+	`backlog_id` bigint(20) DEFAULT NULL,
+	`release_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -449,9 +451,11 @@ CREATE TABLE `pm_scrum`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_scrum_prod_proj` (`name`,`product_id`,`project_id`),
+	UNIQUE KEY `uk_scrum_prod_proj` (`name`,`product_id`,`project_id`,`backlog_id`,`release_id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
-	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
+	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
+	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
+	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_scrum_request`

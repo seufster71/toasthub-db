@@ -121,6 +121,9 @@ load_base(){
    	
    	echo "Loading client_backlog_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_backlog_db_data.sql
+   	
+   	echo "Loading client_scrum_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_scrum_db_data.sql
 	
 	echo "Loading client_defect_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_defect_db_data.sql

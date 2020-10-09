@@ -181,6 +181,7 @@ CREATE TABLE `pm_product_team`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_product_team` (`product_id`,`team_id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -220,6 +221,7 @@ CREATE TABLE `pm_project_team`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_project_team` (`project_id`,`team_id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -261,6 +263,7 @@ CREATE TABLE `pm_backlog_team`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_backlog_team` (`backlog_id`,`team_id`),
 	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -303,6 +306,7 @@ CREATE TABLE `pm_release_team`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_release_team` (`release_id`,`team_id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

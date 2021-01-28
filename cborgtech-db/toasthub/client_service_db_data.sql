@@ -19,7 +19,6 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_OPTION_SVC','1.0','1.0','PrefOptionAdminSvc','ADMIN','LOCAL','APR','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PREF_TEXT_SVC','1.0','1.0','PrefTextAdminSvc','ADMIN','LOCAL','APR','R');
 
-
 -- public
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PUBLIC_SVC','1.0','1.0','PublicSvc','PUBLIC','LOCAL','APR','R');
 

@@ -88,7 +88,7 @@ CREATE TABLE `ec_attachment_thumbnail`
 	
 CREATE TABLE `ec_account`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`user_ref_id` bigint(20) NOT NULL,
+	`member_id` bigint(20) NOT NULL,
 	`balance` decimal(8,2),
 	`type` varchar(30),
 	`balance_cryto` decimal(16,8),
@@ -102,12 +102,12 @@ CREATE TABLE `ec_account`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`user_ref_id`) REFERENCES `ec_user_ref` (`id`)
+	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `ec_store`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`title` varchar(200) NOT NULL,
+	`name` varchar(200) NOT NULL,
 	`description` varchar(1000),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
@@ -160,7 +160,7 @@ CREATE TABLE `ec_operator_role`
 CREATE TABLE `ec_store_item`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`store_id` bigint(20) NOT NULL,
-	`title` varchar(200) NOT NULL,
+	`name` varchar(200) NOT NULL,
 	`description` varchar(1000),
 	`price` decimal(8,2),
 	`price_type` varchar(10),
@@ -206,16 +206,53 @@ CREATE TABLE `ec_attachments_meta`
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`attachment_id`) REFERENCES `ec_attachments` (`id`),
 	FOREIGN KEY (`thumbnail_id`) REFERENCES `ec_attachment_thumbnail` (`id`),
-	FOREIGN KEY (`store_item_id`) REFERENCES `ec_store_item` (`id`),
+	FOREIGN KEY (`store_item_id`) REFERENCES `ec_store_item` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `ec_currency`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`type` varchar(128) NOT NULL,
+	`scale` INT NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`),
+	FOREIGN KEY (`currency_id`) REFERENCES `ec_currency` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+		
+CREATE TABLE `ec_cart`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`member_id` bigint(20) NOT NULL,
+	`currency_id` bigint(20) NOT NULL,
+	`quantity` INT DEFAULT 0,
+	`total_price` decimal(8,2),
+	`total_price_crypto` decimal(16,8),
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`),
+	FOREIGN KEY (`currency_id`) REFERENCES `ec_currency` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `ec_cart_item`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`cart_id` bigint(20) NOT NULL,
 	`store_item_id` bigint(20) NOT NULL,
 	`quantity` INT DEFAULT 0,
 	`total_price` decimal(8,2),
 	`total_price_crypto` decimal(16,8),
-	`user_ref_id` bigint(20) NOT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -225,23 +262,7 @@ CREATE TABLE `ec_cart_item`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`store_item_id`) REFERENCES `ec_store_item` (`id`),
-	FOREIGN KEY (`user_ref_id`) REFERENCES `ec_user_ref` (`id`)
+	FOREIGN KEY (`cart_id`) REFERENCES `ec_cart` (`id`),
+	FOREIGN KEY (`store_item_id`) REFERENCES `ec_store_item` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
-CREATE TABLE `ec_store_operator`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`store_id` bigint(20) NOT NULL,
-	`user_ref_id` bigint(20) NOT NULL,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`store_id`) REFERENCES `ec_store` (`id`),
-	FOREIGN KEY (`user_ref_id`) REFERENCES `ec_user_ref` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

@@ -7,6 +7,9 @@ load_base(){
 	echo "Creating db ${1}"
   	mysqladmin -h ${2} -u ${3} --password=${4} create ${1}
   	
+  	
+  	echo "Loading Core"
+  	
 	echo "Loading client_db.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_db.sql
    	
@@ -36,6 +39,14 @@ load_base(){
    	
    	echo "Loading client_confirm_email_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_confirm_email_db_data.sql
+   	
+   	echo "Loading client_user_profile_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_user_profile_db_data.sql
+   	
+   	echo "Loading client_service_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_service_db_data.sql
+   	
+   	echo "Loading Core Admin"
    	
    	echo "Loading client_admin_page_form_field_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_page_form_field_db_data.sql
@@ -79,6 +90,11 @@ load_base(){
    	echo "Loading client_admin_category_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_category_db_data.sql
    	
+   	echo "Loading admin_db_data.sql to ${1}"
+	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/admin_db_data.sql
+	
+   	echo "Load Social"
+   	
    	echo "Loading client_social_aquaintance_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_social_aquaintance_db_data.sql
    	
@@ -96,16 +112,9 @@ load_base(){
    	
    	echo "Loading client_social_location_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_social_location_db_data.sql
-   	
-   	echo "Loading client_user_profile_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_user_profile_db_data.sql
-   	
-   	echo "Loading client_service_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_service_db_data.sql
-
-   	echo "Loading admin_db_data.sql to ${1}"
-	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/admin_db_data.sql
 	
+	
+	echo "Loading Project Management"
 	
 	echo "Loading pm client_db.sql to ${1}"
 	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_db.sql
@@ -152,6 +161,22 @@ load_base(){
    	echo "Loading client_roles_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_roles_db_data.sql
    	
+   	echo "Loading client_service_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_service_db_data.sql
+   	
+   	echo "Loading E-Commerce"
+   	
+   	echo "Loading ec client_db.sql to ${1}"
+	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_db.sql
+	
+   	echo "Loading client_store_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_store_db_data.sql
+   	
+   	echo "Loading client_admin_store_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_admin_store_db_data.sql
+   	
+   	echo "Loading client_service_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_service_db_data.sql
    	
 	echo "Done Loading db ${1}"
 	}

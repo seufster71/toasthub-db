@@ -39,7 +39,7 @@ load_base(){
 }
 	
 all() {
-	load_base cborgapp_main localhost cyborg c7b8rg
+	load_base cborgapp_main localhost cyborg c7b8rg#P
 }
 
 all

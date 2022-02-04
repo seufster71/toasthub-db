@@ -152,12 +152,15 @@ load_base(){
    	echo "Loading client_roles_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_roles_db_data.sql
    	
+   	echo "Loading client_service_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_service_db_data.sql
+   	
    	
 	echo "Done Loading db ${1}"
 	}
 	
 all() {
-	load_base cborgapp_cborgtech localhost cyborg c7b8rg
+	load_base cborgapp_cborgtech localhost cyborg c7b8rg#P
 	}
 	
 all

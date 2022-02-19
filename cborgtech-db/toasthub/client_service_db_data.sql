@@ -44,9 +44,9 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 
 -- system
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SYSTEM_SVC','1.0','1.0','SystemSvc','SYSTEM','LOCAL','SYSAREA','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SERVICE_CRAWLER_SVC','1.0','1.0','ServiceCrawlerAdminSvc','SYSTEM','LOCAL','SSC','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('CLIENT_DOMAIN_SVC','1.0','1.0','ClientDomainAdminSvc','SYSTEM','LOCAL','SCD','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('APPLICATION_SVC','1.0','1.0','ApplicationAdminSvc','SYSTEM','LOCAL','SA','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SYSTEM_SERVICES_SVC','1.0','1.0','ServiceCrawlerAdminSvc','SYSTEM','LOCAL','SSC','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SYSTEM_CLIENT_DOMAIN_SVC','1.0','1.0','ClientDomainAdminSvc','SYSTEM','LOCAL','SCD','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('SYSTEM_APPLICATION_SVC','1.0','1.0','ApplicationAdminSvc','SYSTEM','LOCAL','SA','R');
 
 -- login
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('LOGIN_SVC','1.0','1.0','UserManagerSvc','LOGIN','LOCAL','LAREA','R');

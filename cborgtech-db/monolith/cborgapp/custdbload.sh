@@ -56,16 +56,16 @@ load_base(){
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_language_db_data.sql
    	
    	echo "Loading client_admin_service_crawler_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_service_crawler_db_data.sql
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_system_service_crawler_db_data.sql
    	
    	echo "Loading client_admin_user_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_user_db_data.sql
    	
    	echo "Loading client_admin_client_domain_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_client_domain_db_data.sql
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_system_client_domain_db_data.sql
    	
    	echo "Loading client_admin_application_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_application_db_data.sql
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_system_application_db_data.sql
    	
    	echo "Loading client_admin_permission_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub/client_admin_permission_db_data.sql

@@ -156,6 +156,14 @@ INSERT INTO texts (default_text) VALUES ('Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Status');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_PAGE'),'SYSTEM_CLIENT_DOMAIN_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active"}',4);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_PAGE'),'SYSTEM_CLIENT_DOMAIN_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}',4);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_TABLE_STATUS'),'Status','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_TABLE_STATUS'),'Estado','es',true);
+
+INSERT INTO texts (default_text) VALUES ('Column Options');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_PAGE'),'SYSTEM_CLIENT_DOMAIN_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}',6);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_TABLE_OPTIONS'),'Options','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'SYSTEM_CLIENT_DOMAIN_TABLE_OPTIONS'),'Options','es',true);

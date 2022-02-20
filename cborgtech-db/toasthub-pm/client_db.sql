@@ -601,5 +601,102 @@ CREATE TABLE `pm_watcher`
 	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `pm_deploy`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`owner_id` bigint(20) NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`last_success` datetime,
+	`last_fail` datetime,
+	`last_duration` double(8,0),
+	`run_status` varchar(200) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_deploy_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`deploy_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_deploy_team` (`deploy_id`,`team_id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_deploy_settings`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`deploy_id` bigint(20) DEFAULT NULL,
+	`cron_schedule` varchar(200) NOT NULL,
+	`server_name` varchar(200) NOT NULL,
+	`ssh_username` varchar(200) NOT NULL,
+	`pass_phrase` varchar(500) NOT NULL,
+	`ssh_token` varchar(200),
+	`workspace` varchar(500) NOT NULL,
+	`staging_dir` varchar(500) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `pm_deploy_pipeline_item`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`deploy_id` bigint(20) DEFAULT NULL,
+	`name` varchar(200) NOT NULL,
+	`branch` varchar(200) NOT NULL,
+	`compile_type` varchar(200) NOT NULL,
+	`commandline_script` varchar(500) NOT NULL,
+	`sequence` int NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
+	
+CREATE TABLE `pm_deploy_build`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`deploy_id` bigint(20) DEFAULT NULL,
+	`start_date` datetime,
+	`end_date` datetime,
+	`server_name` varchar(200) NOT NULL,
+	`build_status` varchar(100) NOT NULL,
+	`console_output_file` varchar(500) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 

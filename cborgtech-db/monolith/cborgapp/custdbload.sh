@@ -140,6 +140,9 @@ load_base(){
    	echo "Loading client_workflow_step_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_workflow_step_db_data.sql
    	
+   	echo "Loading client_deploy_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_deploy_db_data.sql
+   	
    	echo "Loading client_team_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_team_db_data.sql
    	

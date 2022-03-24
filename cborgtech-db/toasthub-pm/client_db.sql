@@ -114,6 +114,29 @@ CREATE TABLE `pm_member_role`
 	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
+CREATE TABLE `pm_team_member_role`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`team_id` bigint(20) NOT NULL,
+	`member_id` bigint(20) NOT NULL,
+	`role_id` bigint(20) NOT NULL,
+	`sort_order` INT DEFAULT 1,
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`),
+	FOREIGN KEY (`member_id`) REFERENCES `pm_member` (`id`),
+	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`),
+	UNIQUE KEY `uk_team_member_role` (`team_id`,`member_id`,`role_id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
 CREATE TABLE `pm_workflow`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
@@ -600,7 +623,7 @@ CREATE TABLE `pm_watcher`
 	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`),
 	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-
+	
 CREATE TABLE `pm_deploy`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`owner_id` bigint(20) NOT NULL,
@@ -608,7 +631,16 @@ CREATE TABLE `pm_deploy`
 	`last_success` datetime,
 	`last_fail` datetime,
 	`last_duration` double(8,0),
-	`run_status` varchar(200) NOT NULL,
+	`run_status` varchar(200),
+	`cron_schedule` varchar(200),
+	`scm_user` varchar(500),
+	`scm_password` varchar(500),
+	`server_name` varchar(500),
+	`ssh_username` varchar(200),
+	`pass_phrase` varchar(500),
+	`ssh_token` varchar(200),
+	`workspace` varchar(500),
+	`staging_dir` varchar(500),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -637,34 +669,13 @@ CREATE TABLE `pm_deploy_team`
 	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-	
-CREATE TABLE `pm_deploy_settings`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`deploy_id` bigint(20) DEFAULT NULL,
-	`cron_schedule` varchar(200) NOT NULL,
-	`server_name` varchar(200) NOT NULL,
-	`ssh_username` varchar(200) NOT NULL,
-	`pass_phrase` varchar(500) NOT NULL,
-	`ssh_token` varchar(200),
-	`workspace` varchar(500) NOT NULL,
-	`staging_dir` varchar(500) NOT NULL,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `pm_deploy_pipeline_item`
+CREATE TABLE `pm_deploy_pipeline`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`deploy_id` bigint(20) DEFAULT NULL,
 	`name` varchar(200) NOT NULL,
-	`branch` varchar(200) NOT NULL,
+	`repository_url` varchar(500),
+	`branch` varchar(500),
 	`compile_type` varchar(200) NOT NULL,
 	`commandline_script` varchar(500) NOT NULL,
 	`sequence` int NOT NULL,
@@ -685,8 +696,16 @@ CREATE TABLE `pm_deploy_build`
 	`deploy_id` bigint(20) DEFAULT NULL,
 	`start_date` datetime,
 	`end_date` datetime,
-	`server_name` varchar(200) NOT NULL,
+	`server_name` varchar(500) NOT NULL,
 	`build_status` varchar(100) NOT NULL,
+	`cron_schedule` varchar(200),
+	`scm_user` varchar(500),
+	`scm_password` varchar(500),
+	`ssh_username` varchar(200),
+	`pass_phrase` varchar(500),
+	`ssh_token` varchar(200),
+	`workspace` varchar(500),
+	`staging_dir` varchar(500),
 	`console_output_file` varchar(500) NOT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
@@ -700,3 +719,23 @@ CREATE TABLE `pm_deploy_build`
 	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `pm_deploy_pipeline_build`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`deploy_build_id` bigint(20) DEFAULT NULL,
+	`name` varchar(200) NOT NULL,
+	`repository_url` varchar(500),
+	`branch` varchar(500),
+	`compile_type` varchar(200) NOT NULL,
+	`commandline_script` varchar(500) NOT NULL,
+	`sequence` int NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`deploy_build_id`) REFERENCES `pm_deploy_build` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	

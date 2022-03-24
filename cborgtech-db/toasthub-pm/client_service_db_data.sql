@@ -16,3 +16,4 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_TASK_SVC','1.0','1.0','PMTaskSvc','MEMBER','LOCAL','MPMTASK','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_WORKFLOW_SVC','1.0','1.0','PMWorkflowSvc','MEMBER','LOCAL','MPMWF','R');
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_WORKFLOW_STEP_SVC','1.0','1.0','PMWorkflowStepSvc','MEMBER','LOCAL','MPMWFS','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('PM_DEPLOY_SVC','1.0','1.0','PMDeploySvc','MEMBER','LOCAL','MPMDEF','R');

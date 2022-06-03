@@ -94,27 +94,43 @@ INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_VALUE'),'','Value:','en',true,false,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_VALUE'),'','Valor:','es',true,false,'');
 
-INSERT INTO texts (default_text) VALUES ('Href');
+INSERT INTO texts (default_text) VALUES ('Route web');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Href');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Href');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_HREF',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"href","type":"String","method":"setMValues"}',1);
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_HREF'),'','Href:','en',true,false,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_HREF'),'','Href:','es',true,false,'');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Route web');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Ruta web');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_ROUTE_WEB',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"routeWeb","type":"String","method":"setMValues"}',1);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ROUTE_WEB'),'','Route Web:','en',true,false,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ROUTE_WEB'),'','Ruta Web:','es',true,false,'');
 
-INSERT INTO texts (default_text) VALUES ('Image');
+INSERT INTO texts (default_text) VALUES ('Route Native');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Image');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Imagen');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_IMAGE',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"image","type":"String","method":"setMValues"}',2);
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_IMAGE'),'','Image:','en',true,false,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_IMAGE'),'','Imagen:','es',true,false,'');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Route native');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Ruta nativa');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_ROUTE_NATIVE',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"routeNative","type":"String","method":"setMValues"}',2);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ROUTE_NATIVE'),'','Route Native:','en',true,false,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ROUTE_NATIVE'),'','Ruta Nativa:','es',true,false,'');
+
+INSERT INTO texts (default_text) VALUES ('Icon Web');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Icon Web');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Icono web');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_ICON_WEB',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"iconWeb","type":"String","method":"setMValues"}',3);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ICON_WEB'),'','Icon Web:','en',true,false,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ICON_WEB'),'','Icono web:','es',true,false,'');
+
+INSERT INTO texts (default_text) VALUES ('Icon Native');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Icon Native');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Icono nativo');
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_ICON_NATIVE',@lastid,'MTXT','text',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"iconNative","type":"String","method":"setMValues"}',4);
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ICON_NATIVE'),'','Icon Native:','en',true,false,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_ICON_NATIVE'),'','Icono nativo:','es',true,false,'');
 
 INSERT INTO texts (default_text) VALUES ('Rendered');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Rendered');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Rendido');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_RENDERED',@lastid,'MBLN','radioH',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"rendered","type":"Boolean","method":"setMValues"}',3);
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_MENU_ITEM_FORM'),'ADMIN_MENU_ITEM_FORM_RENDERED',@lastid,'MBLN','radioH',0,0,null,'FORM1','MVALUES','{"clazz":"org.toasthub.core.general.model.MenuItem","field":"rendered","type":"Boolean","method":"setMValues"}',5);
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_RENDERED'),'{"options":[{"value":true,"label":"True","default":true},{"value":false,"label":"False"}]}','Rendered:','en',true,true,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'ADMIN_MENU_ITEM_FORM_RENDERED'),'{"options":[{"value":true,"label":"Cierto","default":true},{"value":false,"label":"Falso"}]}','Rendido:','es',true,true,'');
 

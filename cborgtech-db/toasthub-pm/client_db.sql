@@ -3,6 +3,7 @@ CREATE TABLE `pm_team`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`owner_id` bigint(20) NOT NULL,
 	`name` varchar(200) NOT NULL,
+	`type` varchar(200),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -11,7 +12,8 @@ CREATE TABLE `pm_team`
 	`created` datetime DEFAULT CURRENT_TIMESTAMP,
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_team_name` (`name`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_role`
@@ -667,13 +669,13 @@ CREATE TABLE `pm_deploy_pipeline`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`deploy_id` bigint(20) DEFAULT NULL,
 	`name` varchar(200) NOT NULL,
+	`sort_order` INT NOT NULL DEFAULT 1,
 	`scm_url` varchar(500),
 	`scm_user` varchar(500),
 	`scm_password` varchar(500),
 	`branch` varchar(500),
 	`compiler` varchar(200) NOT NULL,
-	`commandline_script` varchar(500) NOT NULL,
-	`sequence` int NOT NULL,
+	`commandline_script` varchar(500),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -683,6 +685,7 @@ CREATE TABLE `pm_deploy_pipeline`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_deploy_sort_order` (`deploy_id`,`sort_order`),
 	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;	
 	

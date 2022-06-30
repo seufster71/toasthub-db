@@ -52,7 +52,7 @@ INSERT INTO texts (default_text) VALUES ('Column Link Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Link Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Link Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_PERMISSION_PAGE'),'PM_PERMISSION_TABLE_LINK_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY_ROLE_PERMISSION","classField":"fa fa-link fa-1","permission":{"AUDU":"R"},"label":{"en":"Add/Modify Role Permission"},"fieldLockObj":"rolePermission","lock":"locked"}],"conditionParent":"NotNull"}',0);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_PERMISSION_PAGE'),'PM_PERMISSION_TABLE_LINK_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY_ROLE_PERMISSION","classField":"fa-solid fa-link thub-1","permission":{"AUDU":"R"},"label":{"en":"Add/Modify Role Permission"},"fieldLockObj":"rolePermission","lock":"locked"}],"conditionParent":"NotNull","allowLinkParentType":"TEAM_ROLE"}',0);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_PERMISSION_TABLE_LINK_OPTIONS'),'','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_PERMISSION_TABLE_LINK_OPTIONS'),'','es',true);
 
@@ -116,7 +116,7 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_PERMISSION_PAGE'),'PM_PERMISSION_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"APMPERM":"W"},"label":{"en":"Modify"},"lock":"locked"},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"APMPERM":"W"},"label":{"en":"Delete"},"lock":"locked"} ]}',7);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_PERMISSION_PAGE'),'PM_PERMISSION_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"APMPERM":"W"},"label":{"en":"Modify"},"lock":"locked"},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"APMPERM":"W"},"label":{"en":"Delete"},"lock":"locked"} ]}',7);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_PERMISSION_TABLE_OPTIONS'),'Options','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_PERMISSION_TABLE_OPTIONS'),'Options','es',true);
 

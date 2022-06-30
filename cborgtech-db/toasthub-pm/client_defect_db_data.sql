@@ -59,7 +59,7 @@ INSERT INTO texts (default_text) VALUES ('Assign to');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Assign to');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Asignar a');
-INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEFECT_FORM'),'PM_DEFECT_FORM_ASSIGNEE',@lastid,'SLT','select',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.Defect","field":"assignee","type":"Long"}',6);
+INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEFECT_FORM'),'PM_DEFECT_FORM_ASSIGNEE',@lastid,'SLT','select',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.Defect","method":"updateAssignee","type":"Map"}',6);
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEFECT_FORM_ASSIGNEE'),'','Assign to:','en',true,false,'');
 INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEFECT_FORM_ASSIGNEE'),'','Asignar a:','es',true,false,'');
 
@@ -229,6 +229,6 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEFECT_PAGE'),'PM_DEFECT_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}',8);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEFECT_PAGE'),'PM_DEFECT_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}',8);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_DEFECT_TABLE_OPTIONS'),'Options','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_DEFECT_TABLE_OPTIONS'),'Options','es',true);

@@ -175,8 +175,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Compiler');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Compiladora');
 INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEPLOY_PIPELINE_FORM'),'PM_DEPLOY_PIPELINE_FORM_COMPILER',@lastid,'TXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.DeployPipeline","field":"compiler","type":"String"}',6);
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_PIPELINE_FORM_BRANCH'),'','Compiler','en',true,true,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_PIPELINE_FORM_BRANCH'),'','Compiladora','es',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_PIPELINE_FORM_COMPILER'),'','Compiler','en',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_PIPELINE_FORM_COMPILER'),'','Compiladora','es',true,true,'');
 
 
 
@@ -208,7 +208,7 @@ INSERT INTO texts (default_text) VALUES ('Column SCM URL');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column SCM URL');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','SCM URL columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEPLOY_PIPELINE_PAGE'),'PM_DEPLOY_PIPELINE_TABLE_SCM_URL',@lastid,'TABLE1','{"field":"scmUrl"}',1);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEPLOY_PIPELINE_PAGE'),'PM_DEPLOY_PIPELINE_TABLE_SCM_URL',@lastid,'TABLE1','{"field":"scmURL"}',1);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_DEPLOY_PIPELINE_TABLE_SCM_URL'),'SCM URL','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_DEPLOY_PIPELINE_TABLE_SCM_URL'),'SCM URL','es',true);
 
@@ -275,8 +275,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','SSH Token');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Ficha SSH');
 INSERT INTO pref_form_field_name (pref_name_id,name,text_id,field_type,html_type,row_count,column_count,class_name,group_name,sub_group_name,class_model,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_DEPLOY_SYSTEM_FORM'),'PM_DEPLOY_SYSTEM_FORM_SSH_TOKEN',@lastid,'TXT','text',0,0,null,'FORM1',null,'{"clazz":"org.toasthub.pm.model.DeploySystem","field":"sshToken","type":"String"}',3);
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_SYSTEM_FORM_SSH_TOKEN'),'','SSH Token:','en',true,true,'');
-INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_SYSTEM_FORM_SSH_TOKEN'),'','Ficha SSH:','es',true,true,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_SYSTEM_FORM_SSH_TOKEN'),'','SSH Token:','en',true,false,'');
+INSERT INTO pref_form_field_value (pref_form_field_name_id,field_value,field_label,lang,rendered,required,validation) VALUES ((SELECT id FROM pref_form_field_name WHERE name = 'PM_DEPLOY_SYSTEM_FORM_SSH_TOKEN'),'','Ficha SSH:','es',true,false,'');
 
 INSERT INTO texts (default_text) VALUES ('Test SSH');
 SET @lastid = LAST_INSERT_ID();

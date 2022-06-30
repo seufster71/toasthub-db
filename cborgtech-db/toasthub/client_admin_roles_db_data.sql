@@ -59,7 +59,7 @@ INSERT INTO texts (default_text) VALUES ('Column Link Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Link Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Link Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_ROLE_PAGE'),'ADMIN_ROLE_TABLE_LINK_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY_USER_ROLE","classField":"fa fa-link fa-1","permission":{"ARER":"R"},"label":{"en":"Add/Modify User Role"}}],"conditionParent":"NotNull"}',0);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_ROLE_PAGE'),'ADMIN_ROLE_TABLE_LINK_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY_USER_ROLE","classField":"fa-solid fa-link thub-1","permission":{"ARER":"R"},"label":{"en":"Add/Modify User Role"}}],"conditionParent":"NotNull"}',0);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'ADMIN_ROLE_TABLE_LINK_OPTIONS'),'','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'ADMIN_ROLE_TABLE_LINK_OPTIONS'),'','es',true);
 
@@ -131,7 +131,7 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_ROLE_PAGE'),'ADMIN_ROLE_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa fa-pencil-square-o fa-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa fa-trash fa-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"MODIFY_PERMISSION","classField":"fa fa-key fa-1","permission":{"ARP":"R"},"label":{"en":"Permissions"}}]}',9);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'ADMIN_ROLE_PAGE'),'ADMIN_ROLE_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"MODIFY_PERMISSION","classField":"fa-solid fa-key thub-1","permission":{"ARP":"R"},"label":{"en":"Permissions"}}]}',9);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'ADMIN_ROLE_TABLE_OPTIONS'),'Options','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'ADMIN_ROLE_TABLE_OPTIONS'),'Options','es',true);
 

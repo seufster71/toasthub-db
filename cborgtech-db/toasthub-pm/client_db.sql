@@ -178,7 +178,7 @@ CREATE TABLE `pm_product`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`description` text,
-	`owner_id` bigint(20) DEFAULT NULL,
+	`user_id` bigint(20) DEFAULT NULL,
 	`workflow_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
@@ -628,7 +628,7 @@ CREATE TABLE `pm_watcher`
 	
 CREATE TABLE `pm_deploy`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`owner_id` bigint(20) NOT NULL,
+	`user_id` bigint(20) NOT NULL,
 	`name` varchar(200) NOT NULL,
 	`last_success` datetime,
 	`last_fail` datetime,

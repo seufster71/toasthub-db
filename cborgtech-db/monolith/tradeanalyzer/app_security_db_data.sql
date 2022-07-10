@@ -106,23 +106,11 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','PM implementar')
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MPMDEP',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 -- Stock Analyzer
-INSERT INTO texts (default_text) VALUES ('TA Place Order');
+INSERT INTO texts (default_text) VALUES ('TA Market Pirate');
 SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Place Order');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Place Order');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAPO',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
-
-INSERT INTO texts (default_text) VALUES ('TA Historically Analyze');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Historically Analyze');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Historically Analyze');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAHA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
-
-INSERT INTO texts (default_text) VALUES ('TA Dashboard');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Dashboard');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Dashboard');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTADASH',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Market Pirate');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Market Pirate');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 INSERT INTO texts (default_text) VALUES ('TA Trade');
 SET @lastid = LAST_INSERT_ID();
@@ -134,13 +122,7 @@ INSERT INTO texts (default_text) VALUES ('TA Historical Analysis');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Historical Analysis');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Historical Analysis');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAHAS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
-
-INSERT INTO texts (default_text) VALUES ('TA Algorithm cruncher');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Algorithm cruncher');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Algorithm cruncher');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAALGC',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAHA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 INSERT INTO texts (default_text) VALUES ('TA Cache');
 SET @lastid = LAST_INSERT_ID();
@@ -148,11 +130,7 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Cache');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Cache');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTACACHE',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
-INSERT INTO texts (default_text) VALUES ('TA Custom technical indicator');
-SET @lastid = LAST_INSERT_ID();
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Custom technical indicator');
-INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Custom technical indicator');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTACTI',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
 
 -- member area
 INSERT INTO texts (default_text) VALUES ('Member Groups');
@@ -348,14 +326,10 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMWFS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMSCR' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMDEP' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTAPO' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTAHA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTADASH' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTATRADE' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTAHAS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTAALGC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTAHA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTACACHE' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
-INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MTACTI' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');

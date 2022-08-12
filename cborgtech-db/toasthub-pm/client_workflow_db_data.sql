@@ -44,8 +44,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Page Header');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Encabezado de página');
 INSERT INTO pref_text_name (pref_name_id,name,text_id) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_PAGE'),'PM_WORKFLOW_PAGE_HEADER',@lastid);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_WORKFLOW_PAGE_HEADER'),'Workflows','en',true);
-INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_WORKFLOW_PAGE_HEADER'),'Flujos de trabajo','es',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_WORKFLOW_PAGE_HEADER'),'Workflow','en',true);
+INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_WORKFLOW_PAGE_HEADER'),'Flujo de trabajo','es',true);
 
 -- TABLE
 INSERT INTO texts (default_text) VALUES ('Column Name');
@@ -68,6 +68,6 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_PAGE'),'PM_WORKFLOW_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"WORKFLOWSTEP","classField":"fa fa-code-fork fa-1","permission":{"ARDR":"W"},"label":{"en":"Workflow step"}}]}',2);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_PAGE'),'PM_WORKFLOW_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}},{"code":"WORKFLOWSTEP","classField":"fa-solid fa-code-fork thub-1","permission":{"ARDR":"W"},"label":{"en":"Workflow step"}}]}',2);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_TABLE_OPTIONS'),'Options','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_TABLE_OPTIONS'),'Options','es',true);

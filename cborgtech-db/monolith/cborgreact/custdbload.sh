@@ -167,6 +167,13 @@ load_base(){
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_service_db_data.sql
    	
    	
+   	echo "Loading app_client_db_data.sql to ${1}"
+	if [ -f app_client_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < app_client_db_data.sql
+   	else
+		echo "ERROR **** File app_client_db_data.sql is missing ***"   
+	fi
+	
 	echo "Done Loading db ${1}"
 	}
 	

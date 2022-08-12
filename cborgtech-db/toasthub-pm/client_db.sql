@@ -547,6 +547,7 @@ CREATE TABLE `pm_task`
 	`release_id` bigint(20) DEFAULT NULL,
 	`backlog_id` bigint(20) DEFAULT NULL,
 	`sprint_id` bigint(20) DEFAULT NULL,
+	`parent_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -561,7 +562,8 @@ CREATE TABLE `pm_task`
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
 	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
-	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`)
+	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`),
+	FOREIGN KEY (`parent_id`) REFERENCES `pm_task` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_test_scenario`

@@ -68,7 +68,7 @@ INSERT INTO texts (default_text) VALUES ('Column Next');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Next');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Nombre de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NEXT',@lastid,'TABLE1','{"fieldJSON":"nextStep"}',2);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_WORKFLOW_STEP_PAGE'),'PM_WORKFLOW_STEP_TABLE_NEXT',@lastid,'TABLE1','{"fieldJSON":"nextStep","fieldLookup":"nextOptions"}',2);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Jump To','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_WORKFLOW_STEP_TABLE_NEXT'),'Salta a','es',true);
 

@@ -29,7 +29,7 @@ CREATE TABLE `ta_technical_indicator`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `UK_technical_indicator_type_technical_indicator_key_symbol` (`technical_indicator_type`,`technical_indicator_key`,`symbol`)
+	UNIQUE KEY `UK_technical_indicator` (`technical_indicator_type`,`technical_indicator_key`,`symbol`, `evaluation_period`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `ta_technical_indicator_detail`

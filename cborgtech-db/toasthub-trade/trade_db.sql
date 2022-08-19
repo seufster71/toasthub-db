@@ -16,7 +16,7 @@ CREATE TABLE `ta_trade` (
 	`trailing_stop_amount` decimal(10, 4),
 	`parsed_buy_condition` varchar(128),
 	`parsed_sell_condition` varchar (128),
-	`iterations` varchar(64),
+	`iterations` bigint(64),
 	`iterations_executed` bigint(20),
 	`first_check` bigint(20),
 	`last_check` bigint(20),

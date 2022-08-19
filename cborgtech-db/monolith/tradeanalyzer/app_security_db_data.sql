@@ -122,7 +122,7 @@ INSERT INTO texts (default_text) VALUES ('TA Historical Analysis');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','TA Historical Analysis');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','TA Historical Analysis');
-INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAHA',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MTAHAS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 INSERT INTO texts (default_text) VALUES ('TA Cache');
 SET @lastid = LAST_INSERT_ID();

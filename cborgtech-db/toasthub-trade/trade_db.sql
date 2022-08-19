@@ -31,6 +31,7 @@ CREATE TABLE `ta_trade` (
 	`recent_buy_order_id` varchar(64),
 	`recent_sell_order_id` varchar(64),
 	`status` varchar(48) NOT NULL,
+	`status_message` varchar(64),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,

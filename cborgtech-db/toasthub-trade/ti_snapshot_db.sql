@@ -27,13 +27,7 @@ CREATE TABLE `ta_ti_snapshot` (
     `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `lock_time` datetime,
     `version` bigint(20) NOT NULL DEFAULT 0,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `UK_ti_snapshot` (
-        `technical_indicator_type`,
-        `technical_indicator_key`,
-        `symbol`,
-        `evaluation_period`
-    )
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE utf8_unicode_ci;
 CREATE TABLE `ta_ti_snapshot_detail` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,

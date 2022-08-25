@@ -212,7 +212,12 @@ load_base(){
 		echo "ERROR **** configuration_db.sql is missing ***"   
 	fi
 	
-	
+	echo "Loading ti_snapshot_db.sql to ${1}"     
+	if [ -f ../../toasthub-trade/ti_snapshot_db.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-trade/ti_snapshot_db.sql
+	else
+		echo "ERROR **** File ti_snapshot.sql is missing ***"   
+	fi
    	
    	echo "Loading client_service_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-trade/client_service_db_data.sql

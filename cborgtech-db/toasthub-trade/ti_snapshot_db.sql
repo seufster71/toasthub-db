@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `ta_ti_snapshot_detail`,
 `ta_ti_snapshot`;
 CREATE TABLE `ta_ti_snapshot` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `ti_snapshot_id` bigint (20),
     `identifier` varchar(64),
     `technical_indicator_key` varchar(64),
     `technical_indicator_type` varchar(64),
@@ -27,7 +28,8 @@ CREATE TABLE `ta_ti_snapshot` (
     `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `lock_time` datetime,
     `version` bigint(20) NOT NULL DEFAULT 0,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`custom_technical_indicator_id`) REFERENCES `ta_custom_technical_indicator` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE utf8_unicode_ci;
 CREATE TABLE `ta_ti_snapshot_detail` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -49,6 +51,5 @@ CREATE TABLE `ta_ti_snapshot_detail` (
     `lock_time` datetime,
     `version` bigint(20) NOT NULL DEFAULT 0,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`ti_snapshot_id`) REFERENCES `ta_ti_snapshot` (`id`),
-    UNIQUE KEY `UK_ti_snapshot_id_flash_time` (`ti_snapshot_id`, `flash_time`)
+    FOREIGN KEY (`ti_snapshot_id`) REFERENCES `ta_ti_snapshot` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE utf8_unicode_ci;

@@ -61,6 +61,7 @@ CREATE TABLE `ta_ti_snapshot` (
 	`first_check` bigint(20) DEFAULT NULL,
 	`last_flash` bigint(20) DEFAULT NULL,
 	`last_check` bigint(20) DEFAULT NULL,
+	`average_success_percent` decimal (10, 4),
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,

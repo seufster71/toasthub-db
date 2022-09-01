@@ -9,10 +9,10 @@ CREATE TABLE `ta_technical_indicator`
     `flashing` bit(1) DEFAULT 0,
 	`updating` bit(1) DEFAULT 0,
 	`symbol`varchar(64),
-	`short_sma_type` varchar(64),
-    `long_sma_type` varchar(64),
-    `lbb_type` varchar(64),
-    `ubb_type`varchar(64),
+	`short_sma_evaluation_duration` bigint(20),
+    `long_sma_evaluation_duration`bigint(20),
+    `lbb_evaluation_duration` bigint(20),
+    `ubb_evaluation_duration` bigint(20),
     `standard_deviations` decimal (10,4),
     `flashed`bigint(20) DEFAULT 0,
     `checked`bigint(20) DEFAULT 0,
@@ -29,7 +29,7 @@ CREATE TABLE `ta_technical_indicator`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `UK_technical_indicator_type_technical_indicator_key_symbol` (`technical_indicator_type`,`technical_indicator_key`,`symbol`)
+	UNIQUE KEY `UK_technical_indicator` (`technical_indicator_type`,`technical_indicator_key`,`symbol`, `evaluation_period`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `ta_technical_indicator_detail`

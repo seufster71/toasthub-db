@@ -1,7 +1,8 @@
-CREATE TABLE `ta_configuration`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `ta_configuration`;
+CREATE TABLE `ta_configuration` (
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`identifier` varchar(64),
-    `backloaded` bit(1) DEFAULT 0,
+	`backloaded` bit(1) DEFAULT 0,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -12,4 +13,4 @@ CREATE TABLE `ta_configuration`
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `UK_identifier` (`identifier`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE utf8_unicode_ci;

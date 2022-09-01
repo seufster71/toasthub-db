@@ -4,7 +4,6 @@ CREATE TABLE `ta_asset_minute`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`identifier` varchar(64),
 	`asset_day_id` bigint(20) NOT NULL,
-	`type` varchar (64),
 	`epoch_seconds` bigint(20),
 	`symbol` varchar(64) NOT NULL,
 	`value` decimal(10,4),

@@ -149,20 +149,6 @@ load_base(){
 		echo "ERROR **** File alg_SL_db.sql is missing ***"   
 	fi
 
-	echo "Loading historical_analysis_db.sql to ${1}"     
-	if [ -f ../../toasthub-trade/historical_analysis_db.sql ]; then
-   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-trade/historical_analysis_db.sql
-	else
-		echo "ERROR **** File historical_analysis_db is missing ***"   
-	fi
-	
-	echo "Loading historical_detail_db.sql to ${1}"     
-	if [ -f ../../toasthub-trade/historical_detail_db.sql ]; then
-   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-trade/historical_detail_db.sql
-	else
-		echo "ERROR **** File historical_detail_db.sql is missing ***"   
-	fi
-
 	echo "Loading asset_day_db.sql to ${1}"     
 	if [ -f ../../toasthub-trade/asset_day_db.sql ]; then
    		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-trade/asset_day_db.sql
@@ -211,7 +197,6 @@ load_base(){
 	else
 		echo "ERROR **** configuration_db.sql is missing ***"   
 	fi
-	
 	
    	
    	echo "Loading client_service_db_data.sql to ${1}"

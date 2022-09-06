@@ -166,6 +166,12 @@ load_base(){
    	echo "Loading client_service_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_service_db_data.sql
    	
+   	echo "Loading client_testcase_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_testcase_db_data.sql
+   	
+   	echo "Loading client_testscript_db_data.sql to ${1}"
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-pm/client_testscript_db_data.sql
+   	
    	
    	echo "Loading app_client_db_data.sql to ${1}"
 	if [ -f app_client_db_data.sql ]; then

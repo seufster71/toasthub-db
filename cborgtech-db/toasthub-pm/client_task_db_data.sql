@@ -6,7 +6,6 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Task Form');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Formulario de tarea');
 INSERT INTO pref_name (pref_product_id,name,text_id,category) VALUES ((SELECT id FROM pref_product WHERE product_code = 'GLOBAL'),'PM_TASK_FORM',@lastid,'MEMBER');
 
-
 INSERT INTO texts (default_text) VALUES ('Summary');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Summary');
@@ -144,11 +143,19 @@ INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES 
 INSERT INTO pref_text_value (pref_text_name_id,text_value,lang,rendered) VALUES ((SELECT id FROM pref_text_name WHERE name = 'PM_TASK_PAGE_HEADER'),'Tareas','es',true);
 
 -- TABLE
+INSERT INTO texts (default_text) VALUES ('Column ID');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column ID');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Id de columna');
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_ID',@lastid,'TABLE1','{"field":"id","prefix":"T-"}',0);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_ID'),'ID','en',true);
+INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_ID'),'ID','es',true);
+
 INSERT INTO texts (default_text) VALUES ('Column Summary');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Summary');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Resumen de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_SUMMARY',@lastid,'TABLE1','{"field":"summary"}',0);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_SUMMARY',@lastid,'TABLE1','{"field":"summary"}',1);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_SUMMARY'),'Summary','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_SUMMARY'),'Resumen','es',true);
 
@@ -156,7 +163,7 @@ INSERT INTO texts (default_text) VALUES ('Column Severity');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Severity');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Severidad de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_SEVERITY',@lastid,'TABLE1','{"field":"severity"}',1);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_SEVERITY',@lastid,'TABLE1','{"field":"severity"}',2);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_SEVERITY'),'Severity','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_SEVERITY'),'Gravedad','es',true);
 
@@ -164,7 +171,7 @@ INSERT INTO texts (default_text) VALUES ('Column Priority');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Priority');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Prioridad de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_PRIORITY',@lastid,'TABLE1','{"field":"priority"}',2);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_PRIORITY',@lastid,'TABLE1','{"field":"priority"}',3);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_PRIORITY'),'Priority','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_PRIORITY'),'Prioridad','es',true);
 
@@ -172,7 +179,7 @@ INSERT INTO texts (default_text) VALUES ('Column Internal Reference');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Internal Reference');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Referencia interna de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_INTERNALREF',@lastid,'TABLE1','{"field":"internalRef"}',3);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_INTERNALREF',@lastid,'TABLE1','{"field":"internalRef"}',4);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_INTERNALREF'),'Internal Reference','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_INTERNALREF'),'Referencia interna','es',true);
 
@@ -180,7 +187,7 @@ INSERT INTO texts (default_text) VALUES ('Column External Reference');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column External Reference');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Referencia externa de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_EXTERNALREF',@lastid,'TABLE1','{"field":"externalRef"}',4);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_EXTERNALREF',@lastid,'TABLE1','{"field":"externalRef"}',5);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_EXTERNALREF'),'External Reference','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_EXTERNALREF'),'Referencia externa','es',true);
 
@@ -188,7 +195,7 @@ INSERT INTO texts (default_text) VALUES ('Column Workflow');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Workflow');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Flujo de trabajo de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_WORKFLOW',@lastid,'TABLE1','{"fieldObject":"workflowStep","field":"name"}',5);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_WORKFLOW',@lastid,'TABLE1','{"fieldObject":"workflowStep","field":"name"}',6);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_WORKFLOW'),'Workflow','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_WORKFLOW'),'Flujo de trabajo','es',true);
 
@@ -196,7 +203,7 @@ INSERT INTO texts (default_text) VALUES ('Column Start Date');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Start Date');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Fecha de inicio de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_STARTDATE',@lastid,'TABLE1','{"field":"startDate"}',6);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_STARTDATE',@lastid,'TABLE1','{"field":"startDate"}',7);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_STARTDATE'),'Start Date','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_STARTDATE'),'Fecha de inicio','es',true);
 
@@ -204,7 +211,7 @@ INSERT INTO texts (default_text) VALUES ('Column Complete Date');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Complete Date');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Fecha completa de columna');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_COMPLETEDATE',@lastid,'TABLE1','{"field":"completeDate"}',7);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_COMPLETEDATE',@lastid,'TABLE1','{"field":"completeDate"}',8);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_COMPLETEDATE'),'Complete Date','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_COMPLETEDATE'),'Fecha completa','es',true);
 
@@ -212,7 +219,7 @@ INSERT INTO texts (default_text) VALUES ('Column Status');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Status');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Column Status');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}',8);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_STATUS',@lastid,'TABLE1','{"fieldBool":"active","labelTrue":{"defaultText":"Active","en":"Active","es":"Activo"},"labelFalse":{"defaultText":"Disabled","en":"Disabled","es":"Inhabilitar"}}',9);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_STATUS'),'Status','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_STATUS'),'Estado','es',true);
 
@@ -220,6 +227,6 @@ INSERT INTO texts (default_text) VALUES ('Column Options');
 SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Column Options');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Estado Options');
-INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}',9);
+INSERT INTO pref_label_name (pref_name_id,name,text_id,group_name,optional_params,sort_order) VALUES((SELECT id FROM pref_name WHERE name = 'PM_TASK_PAGE'),'PM_TASK_TABLE_OPTIONS',@lastid,'TABLE1','{"fieldIcon":[{"code":"MODIFY","classField":"fa-regular fa-pen-to-square thub-1","permission":{"ARER":"R"},"label":{"en":"Modify"}},{"code":"DELETE","classField":"fa-regular fa-trash-can thub-1","permission":{"ARDR":"W"},"label":{"en":"Delete"}}]}',10);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_OPTIONS'),'Options','en',true);
 INSERT INTO pref_label_value (pref_label_name_id,label_value,lang,rendered) VALUES ((SELECT id FROM pref_label_name WHERE name = 'PM_TASK_TABLE_OPTIONS'),'Options','es',true);

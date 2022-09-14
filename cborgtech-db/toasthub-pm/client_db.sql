@@ -143,6 +143,7 @@ CREATE TABLE `pm_workflow`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`description` text,
+	`user_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -152,7 +153,7 @@ CREATE TABLE `pm_workflow`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_name` (`name`)
+	UNIQUE KEY `uk_name_user` (`name`,`user_id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_workflow_step`
@@ -172,6 +173,24 @@ CREATE TABLE `pm_workflow_step`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_name_wf` (`name`,`workflow_id`),
 	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_workflow_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`workflow_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_workflow_team` (`workflow_id`,`team_id`),
+	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `pm_product`
@@ -219,6 +238,7 @@ CREATE TABLE `pm_project`
 	`end_date` datetime NOT NULL,
 	`workflow_id` bigint(20) DEFAULT NULL,
 	`product_id` bigint(20) DEFAULT NULL,
+	`user_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -256,7 +276,7 @@ CREATE TABLE `pm_backlog`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`description` text,
-	`workflow_id` bigint(20) DEFAULT NULL,
+	`user_id` bigint(20) DEFAULT NULL,
 	`product_id` bigint(20) DEFAULT NULL,
 	`project_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
@@ -270,7 +290,6 @@ CREATE TABLE `pm_backlog`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
 	UNIQUE KEY `uk_name_proj` (`name`,`project_id`),
-	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -299,7 +318,7 @@ CREATE TABLE `pm_release`
 	`description` text,
 	`start_date` datetime NOT NULL,
 	`end_date` datetime NOT NULL,
-	`workflow_id` bigint(20) DEFAULT NULL,
+	`user_id` bigint(20) DEFAULT NULL,
 	`product_id` bigint(20) DEFAULT NULL,
 	`project_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
@@ -313,7 +332,6 @@ CREATE TABLE `pm_release`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `uk_name_prod` (`name`,`product_id`),
 	UNIQUE KEY `uk_name_proj` (`name`,`project_id`),
-	FOREIGN KEY (`workflow_id`) REFERENCES `pm_workflow` (`id`),
 	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -342,6 +360,7 @@ CREATE TABLE `pm_sprint`
 	`description` text,
 	`start_date` datetime NOT NULL,
 	`end_date` datetime NOT NULL,
+	`user_id` bigint(20) DEFAULT NULL,
 	`product_id` bigint(20) DEFAULT NULL,
 	`project_id` bigint(20) DEFAULT NULL,
 	`release_id` bigint(20) DEFAULT NULL,
@@ -467,6 +486,7 @@ CREATE TABLE `pm_scrum`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`name` varchar(200) NOT NULL,
 	`description` text,
+	`user_id` bigint(20) DEFAULT NULL,
 	`product_id` bigint(20) DEFAULT NULL,
 	`project_id` bigint(20) DEFAULT NULL,
 	`backlog_id` bigint(20) DEFAULT NULL,
@@ -547,6 +567,7 @@ CREATE TABLE `pm_task`
 	`release_id` bigint(20) DEFAULT NULL,
 	`backlog_id` bigint(20) DEFAULT NULL,
 	`sprint_id` bigint(20) DEFAULT NULL,
+	`parent_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -561,51 +582,8 @@ CREATE TABLE `pm_task`
 	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`),
 	FOREIGN KEY (`release_id`) REFERENCES `pm_release` (`id`),
 	FOREIGN KEY (`backlog_id`) REFERENCES `pm_backlog` (`id`),
-	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-
-CREATE TABLE `pm_test_scenario`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`summary` varchar(200) NOT NULL,
-	`description` text,
-	`type` varchar(100) NOT NULL,
-	`environment` text,
-	`user_info` varchar(2000),
-	`setup_info` text,
-	`defect_id` bigint(20) DEFAULT NULL,
-	`enhancement_id` bigint(20) DEFAULT NULL,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_scenario_def_enh` (`summary`,`defect_id`,`enhancement_id`),
-	FOREIGN KEY (`defect_id`) REFERENCES `pm_defect` (`id`),
-	FOREIGN KEY (`enhancement_id`) REFERENCES `pm_enhancement` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-
-CREATE TABLE `pm_test_case`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`summary` varchar(200) NOT NULL,
-	`description` text,
-	`environment` text,
-	`user_info` varchar(2000),
-	`setup_info` text,
-	`test_scenario_id` bigint(20) NOT NULL,
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`test_scenario_id`) REFERENCES `pm_test_scenario` (`id`)
+	FOREIGN KEY (`sprint_id`) REFERENCES `pm_sprint` (`id`),
+	FOREIGN KEY (`parent_id`) REFERENCES `pm_task` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_watcher`
@@ -636,6 +614,8 @@ CREATE TABLE `pm_deploy`
 	`run_status` varchar(200),
 	`cron_schedule` varchar(200),
 	`workspace` varchar(1000),
+	`product_id` bigint(20) DEFAULT NULL,
+	`project_id` bigint(20) DEFAULT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -644,7 +624,10 @@ CREATE TABLE `pm_deploy`
 	`created` datetime DEFAULT CURRENT_TIMESTAMP,
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_name_prod_project` (`name`,`product_id`,`project_id`),
+	FOREIGN KEY (`product_id`) REFERENCES `pm_product` (`id`),
+	FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_deploy_team`
@@ -728,4 +711,81 @@ CREATE TABLE `pm_deploy_build`
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `pm_test_case`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`user_id` bigint(20) NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`description` text,
+	`environment` text,
+	`user_info` varchar(2000),
+	`setup_info` text,
+	`deploy_id` bigint(20) DEFAULT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_test_case_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`test_case_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_test_case_team` (`test_case_id`,`team_id`),
+	FOREIGN KEY (`test_case_id`) REFERENCES `pm_test_case` (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_test_case_deploy`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`test_case_id` bigint(20) NOT NULL,
+	`deploy_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_test_case_deploy` (`test_case_id`,`deploy_id`),
+	FOREIGN KEY (`test_case_id`) REFERENCES `pm_test_case` (`id`),
+	FOREIGN KEY (`deploy_id`) REFERENCES `pm_deploy` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `pm_test_script`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`name` varchar(200) NOT NULL,
+	`description` text,
+	`environment` text,
+	`user_info` varchar(2000),
+	`setup_info` text,
+	`test_case_id` bigint(20) NOT NULL,
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`test_case_id`) REFERENCES `pm_test_case` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;

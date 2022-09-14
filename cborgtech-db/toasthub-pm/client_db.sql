@@ -715,6 +715,7 @@ CREATE TABLE `pm_deploy_build`
 
 CREATE TABLE `pm_test_case`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`user_id` bigint(20) NOT NULL,
 	`name` varchar(200) NOT NULL,
 	`description` text,
 	`environment` text,

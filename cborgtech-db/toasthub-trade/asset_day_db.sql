@@ -3,7 +3,6 @@
 CREATE TABLE `ta_asset_day`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`identifier` varchar(64),
-	`type` varchar(64),
 	`epoch_seconds` bigint(20),
 	`symbol` varchar(64) NOT NULL,
 	`high` decimal(10,4),

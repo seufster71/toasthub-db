@@ -11,7 +11,7 @@ echo "Done Loading trade to ${1}"
 }
 	
 all() {
-	load_base tradeanalyzer_member localhost cyborg c7b8rg#P
+	load_base tradeanalyzer_memberdata localhost cyborg c7b8rg#P
 	}
 	
 all

@@ -11,7 +11,7 @@ echo "Done Loading ti_snapshot_db to ${1}"
 }
 	
 all() {
-	load_base tradeanalyzer_member localhost cyborg c7b8rg#P
+	load_base tradeanalyzer_memberdata localhost cyborg c7b8rg#P
 	}
 	
 all

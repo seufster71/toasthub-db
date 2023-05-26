@@ -789,3 +789,94 @@ CREATE TABLE `pm_test_script`
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`test_case_id`) REFERENCES `pm_test_case` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+	
+	
+-- Default permissions
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Product view','PMPRODUCTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Product create','PMPRODUCTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Product modify','PMPRODUCTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Product delete','PMPRODUCTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Project view','PMPROJECTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Project create','PMPROJECTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Project modify','PMPROJECTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Project delete','PMPROJECTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Backlog view','PMBACKLOGV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Backlog create','PMBACKLOGC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Backlog modify','PMBACKLOGM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Backlog delete','PMBACKLOGD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Comment view','PMCOMMENTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Comment create','PMCOMMENTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Comment modify','PMCOMMENTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Comment delete','PMCOMMENTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Defect view','PMDEFECTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Defect create','PMDEFECTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Defect modify','PMDEFECTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Defect delete','PMDEFECTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Enhancment view','PMENHANCEMENTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Enhancment create','PMENHANCEMENTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Enhancment modify','PMENHANCEMENTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Enhancment delete','PMENHANCEMENTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Release view','PMRELEASEV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Release create','PMRELEASEC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Release modify','PMRELEASEM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Release delete','PMRELEASED',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Role view','PMROLEV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Role create','PMROLEC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Role modify','PMROLEM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Role delete','PMROLED',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Permission view','PMPERMISSIONV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Permission create','PMPERMISSIONC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Permission modify','PMPERMISSIONM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Permission delete','PMPERMISSIOND',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Scrum view','PMSCRUMV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Scrum create','PMSCRUMC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Scrum modify','PMSCRUMM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Scrum delete','PMSCRUMD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Sprint view','PMSPRINTV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Sprint create','PMSPRINTC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Sprint modify','PMSPRINTM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Sprint delete','PMSPRINTD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Task view','PMTASKV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Task create','PMTASKC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Task modify','PMTASKM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Task delete','PMTASKD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team view','PMTEAMV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team create','PMTEAMC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team modify','PMTEAMM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team delete','PMTEAMD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team Member view','PMTEAMMEMBERV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team Member create','PMTEAMMEMBERC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team Member modify','PMTEAMMEMBERM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Team Member delete','PMTEAMMEMBERD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Case view','PMTESTCASEV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Case create','PMTESTCASEC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Case modify','PMTESTCASEM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Case delete','PMTESTCASED',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Scenario view','PMTESTSCENARIOV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Scenario create','PMTESTSCENARIOC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Scenario modify','PMTESTSCENARIOM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Test Scenario delete','PMTESTSCENARIOD',true,false,true,0);
+
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Workflow view','PMWORKFLOWV',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Workflow create','PMWORKFLOWC',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Workflow modify','PMWORKFLOWM',true,false,true,0);
+INSERT INTO pm_permission (name,code,is_active,is_archive,is_locked,lockowner_id) VALUES ('PM Workflow delete','PMWORKFLOWD',true,false,true,0);
+
+
+	

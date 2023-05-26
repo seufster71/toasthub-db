@@ -105,6 +105,36 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','PM Deploy');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','PM implementar');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MPMDEP',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
+-- Colony Command
+INSERT INTO texts (default_text) VALUES ('CC Colony Command');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Colony Command');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC Comando de colonia');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCC',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('CC Dashboard');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Dashboard');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC Panel');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCCD',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('CC Organization');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Organization');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC Organización');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCCO',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('CC Hive');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Hive');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC Colmena');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCCH',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('CC Hive Sensor');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Hive Sensor');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC sensor de colmena');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCCHS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 -- member area
 INSERT INTO texts (default_text) VALUES ('Member Groups');
@@ -300,6 +330,11 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMWFS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMSCR' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMDEP' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCO' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCH' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCHS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');

@@ -114,7 +114,7 @@ load_base(){
 	
 	## Colony Command
 	echo "Loading client_menu_db_data.sql to ${1}"
-   	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-colony/client_menu_db_data.sql
+   	mysql -h ${2} -u ${3} --password=${4} ${1} < client_menu_db_data.sql
 	
    	echo "Loading client_service_db_data.sql to ${1}"
    	mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-colony/client_service_db_data.sql
@@ -257,6 +257,36 @@ load_base(){
 	fi
    	
    	
+   	## Ecommerce
+   	echo "Loading client_service_db_data.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_service_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_service_db_data.sql
+   	else
+		echo "ERROR **** toasthub-ec/client_service_db_data.sql is missing ***"   
+	fi
+	
+   	echo "Loading client_market_db_data.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_market_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_market_db_data.sql
+   	else
+		echo "ERROR **** toasthub-ec/client_market_db_data.sql is missing ***"   
+	fi
+	
+	echo "Loading client_store_db_data.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_store_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_store_db_data.sql
+   	else
+		echo "ERROR **** toasthub-ec/client_store_db_data.sql is missing ***"   
+	fi
+	
+	echo "Loading client_cart_db_data.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_cart_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_cart_db_data.sql
+   	else
+		echo "ERROR **** toasthub-ec/client_cart_db_data.sql is missing ***"   
+	fi
+
+	
 	echo "Done Loading db ${1}"
 	}
 	
@@ -269,12 +299,20 @@ load_colony_base(){
   	
 
    	
-     ## Colony Command
+    ## Colony Command
     echo "Loading colony_db.sql to ${1}"     
 	if [ -f ../../toasthub-colony/colony_db.sql ]; then
    		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-colony/colony_db.sql
 	else
 		echo "ERROR **** File colony_db.sql is missing ***"   
+	fi
+	
+	## Ecommerce
+	echo "Loading pm client_db.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_db.sql ]; then
+		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_db.sql
+	else
+		echo "ERROR **** toasthub-ec/client_db.sql is missing ***"   
 	fi
 	
 	## Project Management

@@ -13,6 +13,7 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Access Member Area');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Acceder al área de miembros');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MEMAREA',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
 -- member
 INSERT INTO texts (default_text) VALUES ('Member Dashboard');
 SET @lastid = LAST_INSERT_ID();
@@ -136,6 +137,50 @@ INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','CC Hive Sensor')
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','CC sensor de colmena');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MCCHS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
+-- Ecommerce
+INSERT INTO texts (default_text) VALUES ('EC Shop');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC Shop');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC Shop');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MEC',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC Market');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC Market');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC Market');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECMARKET',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC Store');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC Store');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC Store');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECSTORE',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC My Store Inventory');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC My Store Inventory');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC My Store Inventory');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECMYSTOREINVENTORY',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC My Store Orders');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC My Store Orders');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC My Store Orders');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECMYSTOREORDERS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC My Store Receipts');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC My Store Receipts');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC My Store Receipts');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECMYSTORERECEIPTS',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+INSERT INTO texts (default_text) VALUES ('EC My Store Employees');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','EC My Store Employees');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','EC My Store Employees');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('MECMYSTOREEMPLOYEES',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+
 -- member area
 INSERT INTO texts (default_text) VALUES ('Member Groups');
 SET @lastid = LAST_INSERT_ID();
@@ -168,6 +213,8 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Member Logout');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Cierre de sesión de miembro');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('ML',@lastid,'R',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+
 -- Admin
 INSERT INTO texts (default_text) VALUES ('Access Admin Area');
 SET @lastid = LAST_INSERT_ID();
@@ -257,6 +304,25 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Menu');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Menú Admin');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AM',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+-- Ecommerce
+INSERT INTO texts (default_text) VALUES ('Admin Ecommerce Area');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Area');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Área de comercio electrónico de administración');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AEC',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('Admin Ecommerce Market');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Market');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Administrador del mercado de comercio electrónico');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AECMARKET',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('Admin Ecommerce Store');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Store');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Administrador de tienda de comercio electrónico');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AECSTORE',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+
+
 -- System
 INSERT INTO texts (default_text) VALUES ('Access System Area');
 SET @lastid = LAST_INSERT_ID();
@@ -330,11 +396,20 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMWFS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMSCR' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MPMDEP' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCO' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCH' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MCCHS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MEC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECMARKET' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECSTORE' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECMYSTOREINVENTORY' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECMYSTOREORDERS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECMYSTORERECEIPTS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'MECMYSTOREEMPLOYEES' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'M' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ADMAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
@@ -353,6 +428,10 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AS' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'ASVR' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AM' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AEC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECMARKET' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECSTORE' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SYSAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');

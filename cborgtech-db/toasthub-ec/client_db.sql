@@ -1,6 +1,24 @@
 
+CREATE TABLE `ec_team`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`owner_id` bigint(20) NOT NULL,
+	`name` varchar(200) NOT NULL,
+	`type` varchar(200),
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_ec_team_name` (`name`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
 CREATE TABLE `ec_role`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`team_id` bigint(20),
 	`name` varchar(200) NOT NULL,
 	`code` varchar(100) NOT NULL,
 	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
@@ -14,8 +32,9 @@ CREATE TABLE `ec_role`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_ec_code` (`code`),
-	UNIQUE KEY `uk_ec_name` (`name`)
+	UNIQUE KEY `uk_ec_team_code` (`team_id`,`code`),
+	UNIQUE KEY `uk_ec_team_name` (`team_id`,`name`),
+	FOREIGN KEY (`team_id`) REFERENCES `ec_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `ec_permission`
@@ -58,8 +77,13 @@ CREATE TABLE `ec_role_permission`
 	
 CREATE TABLE `ec_member`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`team_id` bigint(20) NOT NULL,
 	`user_id` bigint(20) NOT NULL,
+	`name` varchar(200) NOT NULL,
 	`username` varchar(128) NOT NULL,
+	`type` varchar(100) NOT NULL,
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -69,9 +93,53 @@ CREATE TABLE `ec_member`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_ec_user_username` (`user_id`,`username`)
+	UNIQUE KEY `uk_ec_team_member` (`team_id`,`user_id`,`type`),
+	FOREIGN KEY (`team_id`) REFERENCES `ec_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 		
+CREATE TABLE `ec_member_role`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`member_id` bigint(20) NOT NULL,
+	`role_id` bigint(20) NOT NULL,
+	`sort_order` INT DEFAULT 1,
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`),
+	FOREIGN KEY (`role_id`) REFERENCES `ec_role` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
+CREATE TABLE `ec_team_member_role`
+	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`team_id` bigint(20) NOT NULL,
+	`member_id` bigint(20) NOT NULL,
+	`role_id` bigint(20) NOT NULL,
+	`sort_order` INT DEFAULT 1,
+	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
+	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
+	`is_active` bit(1) DEFAULT 1,
+	`is_archive` bit(1) DEFAULT 0,
+	`is_locked` bit(1) DEFAULT 0,
+	`lockowner_id` bigint(20) DEFAULT NULL,
+	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	`created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`lock_time` datetime,
+	`version` bigint(20) NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`team_id`) REFERENCES `ec_team` (`id`),
+	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`),
+	FOREIGN KEY (`role_id`) REFERENCES `ec_role` (`id`),
+	UNIQUE KEY `uk_ec_team_member_role` (`team_id`,`member_id`,`role_id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
+	
 CREATE TABLE `ec_attachments`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`data` longblob NOT NULL,
@@ -152,7 +220,7 @@ CREATE TABLE `ec_market_location`
 	FOREIGN KEY (`market_id`) REFERENCES `ec_market` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
-CREATE TABLE `ec_currency`
+CREATE TABLE `ec_store_item_inventory`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`type` varchar(128) NOT NULL,
 	`scale` INT NOT NULL,
@@ -169,10 +237,8 @@ CREATE TABLE `ec_currency`
 	
 CREATE TABLE `ec_store`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`market_id` bigint(20) DEFAULT NULL,
 	`name` varchar(200) NOT NULL,
 	`description` varchar(1000),
-	`currency_id` bigint(20) NOT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -181,15 +247,13 @@ CREATE TABLE `ec_store`
 	`created` datetime DEFAULT CURRENT_TIMESTAMP,
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`market_id`) REFERENCES `ec_market` (`id`),
-	FOREIGN KEY (`currency_id`) REFERENCES `ec_currency` (`id`)
+	PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
-CREATE TABLE `ec_store_operator`
+CREATE TABLE `ec_store_team`
 	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
 	`store_id` bigint(20) NOT NULL,
-	`member_id` bigint(20) NOT NULL,
+	`team_id` bigint(20) NOT NULL,
 	`is_active` bit(1) DEFAULT 1,
 	`is_archive` bit(1) DEFAULT 0,
 	`is_locked` bit(1) DEFAULT 0,
@@ -199,28 +263,9 @@ CREATE TABLE `ec_store_operator`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
+	UNIQUE KEY `uk_ec_store_team` (`store_id`,`team_id`),
 	FOREIGN KEY (`store_id`) REFERENCES `ec_store` (`id`),
-	FOREIGN KEY (`member_id`) REFERENCES `ec_member` (`id`)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
-	
-CREATE TABLE `ec_operator_role`
-	(`id` bigint(20) NOT NULL AUTO_INCREMENT,
-	`operator_id` bigint(20) NOT NULL,
-	`role_id` bigint(20) NOT NULL,
-	`sort_order` INT DEFAULT 1,
-	`start_date` datetime DEFAULT '1970-01-01 00:00:01',
-	`end_date` datetime DEFAULT '2999-01-01 23:59:59',
-	`is_active` bit(1) DEFAULT 1,
-	`is_archive` bit(1) DEFAULT 0,
-	`is_locked` bit(1) DEFAULT 0,
-	`lockowner_id` bigint(20) DEFAULT NULL,
-	`modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`created` datetime DEFAULT CURRENT_TIMESTAMP,
-	`lock_time` datetime,
-	`version` bigint(20) NOT NULL DEFAULT 0,
-	PRIMARY KEY (`id`),
-	FOREIGN KEY (`operator_id`) REFERENCES `ec_store_operator` (`id`),
-	FOREIGN KEY (`role_id`) REFERENCES `ec_role` (`id`)
+	FOREIGN KEY (`team_id`) REFERENCES `ec_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `ec_store_item`

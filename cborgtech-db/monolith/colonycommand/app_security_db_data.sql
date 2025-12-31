@@ -321,6 +321,16 @@ SET @lastid = LAST_INSERT_ID();
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Store');
 INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Administrador de tienda de comercio electrónico');
 INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AECSTORE',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('Admin Ecommerce Store Item');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Store Item');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Artículo de tienda de comercio electrónico de administración');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AECSTOREITEM',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
+INSERT INTO texts (default_text) VALUES ('Admin Ecommerce Store Item Inventory');
+SET @lastid = LAST_INSERT_ID();
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'en','Admin Ecommerce Store Item Inventory');
+INSERT INTO langtexts (text_id,lang,text) VALUES (@lastid,'es','Administrador del inventario de artículos de la tienda de comercio electrónico');
+INSERT INTO permission (code,title_id,rights,application_id) VALUES ('AECSTOREITEMINVENTORY',@lastid,'W',(SELECT id FROM application WHERE code = 'APP_RAPID'));
 
 
 -- System
@@ -432,6 +442,10 @@ INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AEC' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECMARKET' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECSTORE' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECSTOREITEM' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'AECSTOREITEMINVENTORY' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'A' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
+
+
 
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SYSAREA' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');
 INSERT INTO role_permission (role_id,permission_id,rights) SELECT id,(SELECT id FROM permission WHERE code = 'SD' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID')),'W' FROM role WHERE code = 'S' AND application_id = (SELECT id FROM application WHERE code = 'APP_RAPID');

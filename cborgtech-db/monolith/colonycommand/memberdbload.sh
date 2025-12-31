@@ -279,6 +279,16 @@ load_base(){
 		echo "ERROR **** toasthub-ec/client_store_db_data.sql is missing ***"   
 	fi
 	
+	echo "Loading client_storeitem_db_data.sql to ${1}"
+	if [ -f ../../toasthub-ec/client_storeitem_db_data.sql ]; then
+   		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_storeitem_db_data.sql
+   	else
+		echo "ERROR **** toasthub-ec/client_storeitem_db_data.sql is missing ***"   
+	fi
+	
+	
+	
+	
 	echo "Loading client_cart_db_data.sql to ${1}"
 	if [ -f ../../toasthub-ec/client_cart_db_data.sql ]; then
    		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_cart_db_data.sql
@@ -308,7 +318,7 @@ load_colony_base(){
 	fi
 	
 	## Ecommerce
-	echo "Loading pm client_db.sql to ${1}"
+	echo "Loading ecommerce client_db.sql to ${1}"
 	if [ -f ../../toasthub-ec/client_db.sql ]; then
 		mysql -h ${2} -u ${3} --password=${4} ${1} < ../../toasthub-ec/client_db.sql
 	else

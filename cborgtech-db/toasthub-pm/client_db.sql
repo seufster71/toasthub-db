@@ -13,7 +13,7 @@ CREATE TABLE `pm_team`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_team_name` (`name`)
+	UNIQUE KEY `uk_pm_team_name` (`name`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_role`
@@ -32,8 +32,8 @@ CREATE TABLE `pm_role`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_team_code` (`team_id`,`code`),
-	UNIQUE KEY `uk_team_name` (`team_id`,`name`),
+	UNIQUE KEY `uk_pm_team_code` (`team_id`,`code`),
+	UNIQUE KEY `uk_pm_team_name` (`team_id`,`name`),
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
@@ -50,7 +50,8 @@ CREATE TABLE `pm_permission`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_code` (`code`)
+	UNIQUE KEY `uk_pm_code` (`code`),
+	UNIQUE KEY `uk_pm_name` (`name`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_role_permission`
@@ -69,7 +70,7 @@ CREATE TABLE `pm_role_permission`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_role_permission` (`role_id`,`permission_id`),
+	UNIQUE KEY `uk_pm_role_permission` (`role_id`,`permission_id`),
 	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`),
 	FOREIGN KEY (`permission_id`) REFERENCES `pm_permission` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
@@ -92,8 +93,8 @@ CREATE TABLE `pm_member`
 	`lock_time` datetime,
 	`version` bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
-	UNIQUE KEY `uk_team_member` (`team_id`,`user_id`,`type`),
-	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`)
+	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`),
+	UNIQUE KEY `uk_ec_team_member` (`team_id`,`user_id`,`type`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_member_role`
@@ -136,7 +137,7 @@ CREATE TABLE `pm_team_member_role`
 	FOREIGN KEY (`team_id`) REFERENCES `pm_team` (`id`),
 	FOREIGN KEY (`member_id`) REFERENCES `pm_member` (`id`),
 	FOREIGN KEY (`role_id`) REFERENCES `pm_role` (`id`),
-	UNIQUE KEY `uk_team_member_role` (`team_id`,`member_id`,`role_id`)
+	UNIQUE KEY `uk_pm_team_member_role` (`team_id`,`member_id`,`role_id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci;
 	
 CREATE TABLE `pm_workflow`

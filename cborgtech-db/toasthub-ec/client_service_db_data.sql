@@ -11,6 +11,6 @@ INSERT INTO service_class (service_name,api_version,app_version,class_name,categ
 INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('EC_PERMISSION_SVC','1.0','1.0','ECPermissionSvc','MEMBER','LOCAL','MECOPERATOR','R');
 
 -- admin
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('EC_MARKET_ADMIN_SVC','1.0','1.0','ECMarketAdminSvc','ADMIN','LOCAL','AECMARKET','R');
-INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('EC_STORE_ADMIN_SVC','1.0','1.0','ECStoreAdminSvc','ADMIN','LOCAL','AECSTORE','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('EC_ADMIN_MARKET_SVC','1.0','1.0','ECAdminMarketSvc','ADMIN','LOCAL','AECMARKET','R');
+INSERT INTO service_class (service_name,api_version,app_version,class_name,category,location,perm_code,perm_right) VALUES ('EC_ADMIN_STORE_SVC','1.0','1.0','ECAdminStoreSvc','ADMIN','LOCAL','AECSTORE','R');
 
